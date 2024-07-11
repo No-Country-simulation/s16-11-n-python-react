@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <Link href="/about">About</Link>

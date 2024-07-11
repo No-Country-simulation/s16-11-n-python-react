@@ -1,5 +1,3 @@
-export default function ErrorPage() {
-  return (
-    <h1>404 Not Found</h1>
-  )
+export function ErrorPage() {
+  return <h1>404 Not Found</h1>;
 }
