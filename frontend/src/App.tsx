@@ -1,3 +1,4 @@
+import { FormSingIn } from './components/FormSingIn';
 import { ThemeProvider } from './components/ThemeProvider';
 import Router from './routes/Router';
 
@@ -8,6 +9,7 @@ function App() {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           TechIAdemic
         </h1>
+        <FormSingIn />
         <Router />
       </main>
     </ThemeProvider>
