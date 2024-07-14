@@ -12,7 +12,7 @@ export default function Router() {
             component={route.component}
           />
         ) : (
-          <Route component={route.component}></Route>
+          <Route key="route-error" component={route.component}></Route>
         )
       )}
     </Switch>
