@@ -1,7 +1,7 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -10,23 +10,22 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { toast } from "@/components/ui/use-toast"
+import { ButtonLoading } from "./ModalForm"
+import { useState } from "react"
 
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
-import { ButtonLoading } from "./ModalForm";
+interface FormLogInProps {
+    handleRegister: () => void;
+  }
 
-interface FormSingInProps {
-  handleRegister: () => void;
-}
 const formSchema = z.object({
-    username: z.string().min(3, "Campo Obligatorio,"),
-    name: z.string().min(3, 'Campo Obligatorio'),
     email: z.string().email('Email invalido.'),
     password: z.string().min(6, 'La contraseña minima de 6 caracteres.'),
   })
-export const FormSingIn: React.FC<FormSingInProps> = ({ handleRegister }) =>{
+
+export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister })  => {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleLoading = () =>{
@@ -35,8 +34,6 @@ export const FormSingIn: React.FC<FormSingInProps> = ({ handleRegister }) =>{
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            name: "",
-            username: "",
             email: "",
             password: "",
         },
@@ -47,9 +44,9 @@ export const FormSingIn: React.FC<FormSingInProps> = ({ handleRegister }) =>{
     function onSubmit(data: z.infer<typeof formSchema>) {
         handleLoading();
         toast({
-            title: "You submitted the following values:",
+            title: "Su formulario fue enviado:",
             description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 z-20">
+                <pre className="mt-2 w-[340px] rounded-md  p-4 z-20">
               <code className="text-white">{JSON.stringify(data, null, 2)}</code>
             </pre>
           ),
@@ -58,33 +55,7 @@ export const FormSingIn: React.FC<FormSingInProps> = ({ handleRegister }) =>{
 
   return (
  <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-4">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-zinc-500">Nombre:</FormLabel>
-                <FormControl>
-                  <Input placeholder="Nombre" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-zinc-500">Usuario:</FormLabel>
-              <FormControl>
-                <Input placeholder="Usuario" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-6">
         <FormField
             control={form.control}
             name="email"
@@ -116,15 +87,15 @@ export const FormSingIn: React.FC<FormSingInProps> = ({ handleRegister }) =>{
           <div className="w-full text-right">
             <p className="text-zinc-500">Olvide mi contraseña.</p> 
           </div>
-          {isLoading?<Button 
+        {isLoading?<Button 
             variant="login"
             type="submit">Entrar
         </Button>:<ButtonLoading/>}
         <div className="text-center">
-            <p className="text-[#535456]">¿Ya estas registrado? 
-                <b 
+            <p className="text-[#535456]">¿Todavía no tienes una cuenta? 
+                <b
                     className="text-white cursor-pointer" 
-                    onClick={handleRegister}> Click aquí</b> 
+                    onClick={handleRegister}> Créala aquí</b> 
             </p>
         </div>
       </form>
