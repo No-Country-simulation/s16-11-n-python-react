@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  @apply dark:bg-zinc-950 bg-gray-300 dark:text-white min-h-screen;
+}

@@ -1,16 +1,20 @@
-import { About, ErrorPage, Home } from "../pages";
+import { About, CourseDetail, ErrorPage, Home } from '../pages';
 
 export const routes = [
   {
-    path:'/',
+    path: '/',
     component: Home,
   },
   {
-    path:'/about',
+    path: '/about',
     component: About,
   },
   {
+    path: '/course/:id',
+    component: CourseDetail,
+  },
+  {
     errorPage: true,
-    component: ErrorPage
-  }
-]
+    component: ErrorPage,
+  },
+];

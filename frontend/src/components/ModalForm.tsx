@@ -2,7 +2,6 @@ import { FormSingIn } from "./FormSingIn";
 import React, { useState } from "react";
 import { FormLogIn } from "./FormLogIn";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { FaUser } from "react-icons/fa"
 import { Button } from "@/components/ui/button";
 import {
     Sheet,
@@ -11,6 +10,7 @@ import {
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet";
+import { FaUser } from "react-icons/fa";
 
 export function ButtonLoading() {
   return (
@@ -34,7 +34,9 @@ export const ModalForm: React.FC = () => {
     <>
         <Sheet >
             <SheetTrigger asChild>
-                <FaUser className=" p-1 w-7 h-7 cursor-pointer hover:text-[#535456]"/>
+                <div>
+                    <FaUser className=" p-1 w-7 h-7 cursor-pointer hover:text-[#535456]"/>
+                </div>
             </SheetTrigger>
             <SheetContent side="left" className="bg-[#101214] w-full">
                 <SheetHeader>
