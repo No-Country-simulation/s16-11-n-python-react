@@ -3,6 +3,6 @@ import { DropdownMenuUser } from "./DropdownMenuUser";
 import { ModalForm } from "./ModalForm";
 
 export const UserIcon: React.FC = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin] = useState(false);
   return isLogin ? <DropdownMenuUser /> : <ModalForm />;
 };
