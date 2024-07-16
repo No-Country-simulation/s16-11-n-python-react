@@ -5,7 +5,9 @@ export interface UserState {
   setUser: (user: string) => void;
 }
 
-export const createUserSlice: StateCreator<UserState> = (set) => ({
+export const createUserSlice: StateCreator<UserState, [], [], UserState> = (
+  set
+) => ({
   user: null,
   setUser: (user) => set({ user }),
 });
