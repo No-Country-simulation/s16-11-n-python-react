@@ -13,7 +13,10 @@ import { RxExit } from 'react-icons/rx';
 
 export const DropdownMenuUser: React.FC = () => {
     const [themeDark, setThemeDark] = useState(true);
-
+    const user = {
+        name: "Matias Perez",
+        email: "matias@prueba.com"
+    }
     const handleChangeTheme = () => {
         setThemeDark(!themeDark);
     }
@@ -25,14 +28,14 @@ export const DropdownMenuUser: React.FC = () => {
             </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[358px] h-[467px] px-10 mr-10 py-5 ">     
-            <DropdownMenuLabel className="flex justify-start">
-                <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2">Avatar</div>
-                <div>
-                    <div>{'Matias Perez'}</div>
-                    <div>{'matias@prueba.com'}</div>
+            <DropdownMenuLabel className="flex justify-start items-center">
+                <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">Avatar</div>
+                <div className="flex flex-col">
+                    <div className="text-[15px]">{user.name}</div>
+                    <div className="text-[12px]">{user.email}</div>
                 </div>
             </DropdownMenuLabel>
-            <DropdownMenuLabel className="flex items-center justify-between py-2">
+            <DropdownMenuLabel className="flex items-center justify-between my-2">
                 <div className="flex items-center">
                     {
                         themeDark?
@@ -43,16 +46,16 @@ export const DropdownMenuUser: React.FC = () => {
                 </div>
                 <Switch onClick={handleChangeTheme}/>
             </DropdownMenuLabel>
-            <DropdownMenuItem className="flex py-2">
+            <DropdownMenuItem className="flex my-3 cursor-pointer">
                 <FaRegFolder className=" p-1 w-7 h-7 "/>
                 <p className="pl-2 font-bold">Mis Suscripciones</p> 
             </DropdownMenuItem>
-            <DropdownMenuSeparator className="py-2"/>
-            <DropdownMenuItem className="flex py-2">
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="flex my-3 cursor-pointer">
                 <FaUser className=" p-1 w-7 h-7"/>
                 <p className="pl-2 font-bold">Mi Cuenta</p>
             </DropdownMenuItem>
-            <DropdownMenuItem className="flex py-2">
+            <DropdownMenuItem className="flex my-3 cursor-pointer">
                 <RxExit className=" p-1 w-7 h-7"/>
                 <p className="pl-2 font-bold">Salir</p>
             </DropdownMenuItem>
