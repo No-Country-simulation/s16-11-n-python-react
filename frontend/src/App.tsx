@@ -1,7 +1,7 @@
-import { ThemeProvider } from './components/ThemeProvider';
-import Router from './routes/Router';
-import { Toaster } from './components/ui/toaster';
-import { UserIcon } from './components/UserIcon';
+import { ThemeProvider } from "./components/ThemeProvider";
+import Router from "./routes/Router";
+import { Toaster } from "./components/ui/toaster";
+import { UserIcon } from "./components/UserIcon";
 
 function App() {
   return (

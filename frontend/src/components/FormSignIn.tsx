@@ -11,21 +11,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
-import { ButtonLoading } from "./ModalForm";
 import { useState } from "react";
+import { ButtonLoading } from "./ModalForm";
 
-interface FormLogInProps {
+interface FormSignInProps {
   handleRegister: () => void;
 }
-
 const formSchema = z.object({
+  username: z.string().min(3, "Campo Obligatorio."),
+  name: z.string().min(3, "Campo Obligatorio."),
   email: z.string().email("Email invalido."),
   password: z.string().min(6, "La contraseña minima de 6 caracteres."),
 });
-
-export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
+export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoading = () => {
@@ -34,19 +35,19 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
+      username: "",
       email: "",
       password: "",
     },
   });
 
-  // 2. Define a submit handler.
-
   function onSubmit(data: z.infer<typeof formSchema>) {
     handleLoading();
     toast({
-      title: "Su formulario fue enviado:",
+      title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md p-4 z-20">
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 z-20">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -57,8 +58,34 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="px-5 w-full space-y-6"
+        className="px-5 w-full space-y-4"
       >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-zinc-500">Nombre:</FormLabel>
+              <FormControl>
+                <Input placeholder="Nombre" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-zinc-500">Usuario:</FormLabel>
+              <FormControl>
+                <Input placeholder="Usuario" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="email"
@@ -105,10 +132,10 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
         )}
         <div className="text-center">
           <p className="text-[#535456]">
-            ¿Todavía no tienes una cuenta?
+            ¿Ya estas registrado?
             <b className="text-white cursor-pointer" onClick={handleRegister}>
               {" "}
-              Créala aquí
+              Click aquí
             </b>
           </p>
         </div>
