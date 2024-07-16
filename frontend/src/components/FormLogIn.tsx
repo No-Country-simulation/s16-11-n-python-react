@@ -39,8 +39,6 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
     },
   });
 
-  // 2. Define a submit handler.
-
   function onSubmit(data: z.infer<typeof formSchema>) {
     handleLoading();
     toast({
@@ -104,11 +102,10 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
           <ButtonLoading />
         )}
         <div className="text-center">
-          <p className="text-[#535456]">
+          <p className="text-[#535456] text-pretty">
             ¿Todavía no tienes una cuenta?
             <b className="text-white cursor-pointer" onClick={handleRegister}>
-              {" "}
-              Créala aquí
+              {" Créala aquí"}
             </b>
           </p>
         </div>

@@ -131,11 +131,10 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
           <ButtonLoading />
         )}
         <div className="text-center">
-          <p className="text-[#535456]">
+          <p className="text-[#535456] text-pretty">
             ¿Ya estas registrado?
             <b className="text-white cursor-pointer" onClick={handleRegister}>
-              {" "}
-              Click aquí
+              {" Click aquí"}
             </b>
           </p>
         </div>

@@ -29,30 +29,28 @@ export const ModalForm: React.FC = () => {
   };
 
   return (
-    <>
-      <Sheet>
-        <SheetTrigger asChild>
-          <div>
-            <FaUser className="p-1 w-7 h-7 cursor-pointer hover:text-[#535456]" />
+    <Sheet>
+      <SheetTrigger asChild>
+        <div>
+          <FaUser className="p-1 w-7 h-7 cursor-pointer hover:text-[#535456]" />
+        </div>
+      </SheetTrigger>
+      <SheetContent side="left" className="bg-[#101214] ">
+        <SheetHeader>
+          <SheetTitle className="scroll-m-20 text-xl font-bold text-center tracking-tight lg:text-3xl py-5">
+            TechIAdemic
+          </SheetTitle>
+        </SheetHeader>
+        <div className="grid gap-4 py-1">
+          <div className=" h-full w-full flex justify-center flex-col items-center">
+            {isUser ? (
+              <FormLogIn handleRegister={handleRegister} />
+            ) : (
+              <FormSignIn handleRegister={handleRegister} />
+            )}
           </div>
-        </SheetTrigger>
-        <SheetContent side="left" className="bg-[#101214] w-full">
-          <SheetHeader>
-            <SheetTitle className="scroll-m-20 text-xl font-bold text-center tracking-tight lg:text-3xl py-5">
-              TechIAdemic
-            </SheetTitle>
-          </SheetHeader>
-          <div className="grid gap-4 py-1">
-            <div className=" h-full w-full flex justify-center flex-col items-center">
-              {isUser ? (
-                <FormLogIn handleRegister={handleRegister} />
-              ) : (
-                <FormSignIn handleRegister={handleRegister} />
-              )}
-            </div>
-          </div>
-        </SheetContent>
-      </Sheet>
-    </>
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 };
