@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { ButtonLoading } from "./ModalForm";
 import { useState } from "react";
+import { useStore } from "@/contexts/store";
 
 interface FormLogInProps {
   handleRegister: () => void;
@@ -27,6 +28,7 @@ const formSchema = z.object({
 
 export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const setLogin = useStore((state) => state.setLogin);
 
   const handleLoading = () => {
     setIsLoading(!isLoading);
@@ -41,6 +43,7 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     handleLoading();
+    setLogin();
     toast({
       title: "Su formulario fue enviado:",
       description: (

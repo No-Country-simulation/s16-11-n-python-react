@@ -10,14 +10,19 @@ import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import { FaRegFolder, FaRegMoon, FaRegSun, FaUser } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
+import { useTheme } from "./ThemeProvider";
+import { useStore } from "@/contexts/store";
 
 export const DropdownMenuUser: React.FC = () => {
+  const { setTheme } = useTheme();
   const [themeDark, setThemeDark] = useState(true);
+  const setLogout = useStore((state) => state.setLogout);
   const user = {
     name: "Matias Perez",
     email: "matias@prueba.com",
   };
   const handleChangeTheme = () => {
+    setTheme(themeDark == true ? "light" : "dark");
     setThemeDark(!themeDark);
   };
   return (
@@ -27,7 +32,7 @@ export const DropdownMenuUser: React.FC = () => {
           <FaUser className="p-1 w-7 h-7 cursor-pointer text-[#006E2F] hover:text-[#2a8f56]" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[358px] h-[467px] px-10 mr-10 py-5">
+      <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
           <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">
             Avatar
@@ -61,7 +66,9 @@ export const DropdownMenuUser: React.FC = () => {
         </DropdownMenuItem>
         <DropdownMenuItem className="flex my-3 cursor-pointer">
           <RxExit className="p-1 w-7 h-7" />
-          <p className="pl-2 font-bold">Salir</p>
+          <p className="pl-2 font-bold" onClick={() => setLogout()}>
+            Salir
+          </p>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
