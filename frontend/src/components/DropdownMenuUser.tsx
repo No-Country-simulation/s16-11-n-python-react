@@ -17,10 +17,8 @@ export const DropdownMenuUser: React.FC = () => {
   const { setTheme } = useTheme();
   const [themeDark, setThemeDark] = useState(true);
   const setLogout = useStore((state) => state.setLogout);
-  const user = {
-    name: "Matias Perez",
-    email: "matias@prueba.com",
-  };
+  const name = useStore((state) => state.name);
+  const email = useStore((state) => state.email);
   const handleChangeTheme = () => {
     setTheme(themeDark == true ? "light" : "dark");
     setThemeDark(!themeDark);
@@ -29,7 +27,7 @@ export const DropdownMenuUser: React.FC = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div>
-          <FaUser className="p-1 w-7 h-7 cursor-pointer text-[#006E2F] hover:text-[#2a8f56]" />
+          <FaUser className="p-1 w-7 h-7 cursor-pointer text-blue-400 hover:text-blue-500" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
@@ -38,8 +36,8 @@ export const DropdownMenuUser: React.FC = () => {
             Avatar
           </div>
           <div className="flex flex-col">
-            <div className="text-[15px]">{user.name}</div>
-            <div className="text-[12px]">{user.email}</div>
+            <div className="text-[15px]">{name}</div>
+            <div className="text-[12px]">{email}</div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuLabel className="flex items-center justify-between my-2">

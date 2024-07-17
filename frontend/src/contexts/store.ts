@@ -3,7 +3,7 @@ import { devtools, persist } from "zustand/middleware";
 import { createRegisterSlice, RegisterState } from "./slices/registerSlice";
 import { createUserSlice, UserState } from "./slices/userSlices";
 
-interface AppState extends UserState, RegisterState {};
+interface AppState extends UserState, RegisterState {}
 
 export const useStore = create<AppState>()(
   devtools(
