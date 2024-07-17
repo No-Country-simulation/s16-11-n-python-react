@@ -6,7 +6,7 @@ import { UserIcon } from "./components/UserIcon";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <header className="max-w-1600 mx-auto h-16 flex justify-between px-10 items-center bg-black">
+      <header className="max-w-1600 mx-auto h-16 flex justify-between px-10 items-center dark:bg-black">
         Header
         <UserIcon />
       </header>
