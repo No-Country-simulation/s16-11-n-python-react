@@ -7,45 +7,45 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
 import { FaRegFolder, FaRegMoon, FaRegSun, FaUser } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
+import { useTheme } from "./ThemeProvider";
+import { useStore } from "@/contexts/store";
 
 export const DropdownMenuUser: React.FC = () => {
-  const [themeDark, setThemeDark] = useState(true);
-  const user = {
-    name: "Matias Perez",
-    email: "matias@prueba.com",
-  };
+  const { theme, setTheme } = useTheme();
+  const setLogout = useStore((state) => state.setLogout);
+  const name = useStore((state) => state.name);
+  const email = useStore((state) => state.email);
   const handleChangeTheme = () => {
-    setThemeDark(!themeDark);
+    setTheme(theme == "dark" ? "light" : "dark");
   };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div>
-          <FaUser className="p-1 w-7 h-7 cursor-pointer text-[#006E2F] hover:text-[#2a8f56]" />
+          <FaUser className="p-1 w-7 h-7 cursor-pointer text-blue-400 hover:text-blue-500" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[358px] h-[467px] px-10 mr-10 py-5">
+      <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
           <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">
             Avatar
           </div>
           <div className="flex flex-col">
-            <div className="text-[15px]">{user.name}</div>
-            <div className="text-[12px]">{user.email}</div>
+            <div className="text-[15px]">{name}</div>
+            <div className="text-[12px]">{email}</div>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuLabel className="flex items-center justify-between my-2">
           <div className="flex items-center">
-            {themeDark ? (
+            {theme === "dark" ? (
               <FaRegMoon className="p-1 w-7 h-7" />
             ) : (
               <FaRegSun className="p-1 w-7 h-7" />
             )}
             <p className="pl-2 font-bold">
-              Tema {themeDark ? "Oscuro" : "Claro"}
+              Tema {theme === "dark" ? "Oscuro" : "Claro"}
             </p>
           </div>
           <Switch onClick={handleChangeTheme} />
@@ -61,7 +61,9 @@ export const DropdownMenuUser: React.FC = () => {
         </DropdownMenuItem>
         <DropdownMenuItem className="flex my-3 cursor-pointer">
           <RxExit className="p-1 w-7 h-7" />
-          <p className="pl-2 font-bold">Salir</p>
+          <p className="pl-2 font-bold" onClick={() => setLogout()}>
+            Salir
+          </p>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
