@@ -10,26 +10,25 @@ class TokenData(BaseModel):
     email: EmailStr
 
 
-class CreateUserSchema(BaseModel):
+class UserBase(BaseModel):
     name: str | None = None
     last_name: str | None = None
     email: EmailStr
+
+
+class UserCreate(UserBase):
     password: str
     # my_course? Ver como asignar al crear
 
 
-class UserSchema(BaseModel):
-    name: str | None = None
-    last_name: str | None = None
-    email: EmailStr
+class UserSchema(UserBase):
+    id: int
 
     class Config:
         from_attributes = True
 
 
-class UserUpdateSchema(BaseModel):
-    name: str | None = None
-    last_name: str | None = None
+class UserUpdateSchema(UserBase):
     email: EmailStr | None = None
 
     class Config:
