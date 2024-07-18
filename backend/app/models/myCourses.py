@@ -17,10 +17,10 @@ class MyCourses(Base):
     progress: Mapped[int]
     is_active: Mapped[Optional[bool]] = mapped_column(default=True)
 
-    user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("user.id"))
-    user: Mapped[User] = relationship(
-        back_populates="my_courses",
-    )
-    courses: Mapped[List[Course]] = relationship(
-        back_populates="my_courses", lazy="selectin"
-    )
+    # user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("user.id"))
+    # user: Mapped[User] = relationship(
+    #     back_populates="my_courses",
+    # )
+    # courses: Mapped[List[Course]] = relationship(
+    #     back_populates="my_courses", lazy="selectin"
+    # )

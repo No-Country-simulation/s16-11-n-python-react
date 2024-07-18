@@ -15,5 +15,5 @@ class Video(Base):
     check: Mapped[bool] = mapped_column(default=False)
     is_acrive: Mapped[bool] = mapped_column(default=False)
 
-    course_id: Mapped[int] = mapped_column(ForeignKey("course.id"))
-    course: Mapped[Course] = relationship(back_populates="course", lazy="selectin")
+    # course_id: Mapped[int] = mapped_column(ForeignKey("course.id"))
+    # course: Mapped[Course] = relationship(back_populates="course", lazy="selectin")

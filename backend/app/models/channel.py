@@ -15,5 +15,4 @@ class Channel(Base):
     views: Mapped[int]
     subs: Mapped[int]
 
-
-course: Mapped[List[Course]] = relationship(back_populates="channel", lazy="selectin")
+    # course: Mapped[List[Course]] = relationship(back_populates="channel", lazy="selectin")

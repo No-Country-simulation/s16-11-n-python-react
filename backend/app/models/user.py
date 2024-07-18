@@ -21,7 +21,11 @@ class User(Base):
     is_admin: Mapped[Optional[bool]] = mapped_column(default=False)
     is_active: Mapped[Optional[bool]] = mapped_column(default=True)
 
-    comment: Mapped[Comment] = relationship(back_populates="user")
-    my_courses: Mapped[List[MyCourses]] = relationship(
-        back_populates="user", lazy="selectin"
-    )
+    """
+    Faltan agregar mas relaciones
+    Se comentan para hacer una migración de solo el usuario
+    """
+    # comment: Mapped[Comment] = relationship(back_populates="user")
+    # my_courses: Mapped[List[MyCourses]] = relationship(
+    #     back_populates="user", lazy="selectin"
+    # )
