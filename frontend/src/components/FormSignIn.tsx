@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
 import { ButtonLoading } from "./ModalForm";
+import { useStore } from "@/contexts/store";
 
 interface FormSignInProps {
   handleRegister: () => void;
@@ -28,6 +29,10 @@ const formSchema = z.object({
 });
 export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const setLogin = useStore((state) => state.setLogin);
+  const setName = useStore((state) => state.setName);
+  const setEmail = useStore((state) => state.setEmail);
+  const setUser = useStore((state) => state.setUser);
 
   const handleLoading = () => {
     setIsLoading(!isLoading);
@@ -44,6 +49,11 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     handleLoading();
+    //Si el registro es exitoso se guarda los datos de user y se ejecuta el toast:
+    setName(data.name);
+    setEmail(data.email);
+    setUser(data.username);
+    setLogin();
     toast({
       title: "You submitted the following values:",
       description: (
