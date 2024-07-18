@@ -11,8 +11,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
 import { FaPaperPlane } from "react-icons/fa";
+import { TchatMessage } from "./ChatBot";
 
 const FormSchema = z.object({
   messageSend: z
@@ -24,26 +24,33 @@ const FormSchema = z.object({
       message: "No puede contener mas de 250 caracteres",
     }),
 });
+interface InputTextChatProps {
+  setChatMessages: React.Dispatch<React.SetStateAction<TchatMessage[]>>;
+}
 
-export const InputTextChat: React.FC = () => {
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+export const InputTextChat: React.FC<InputTextChatProps> = ({
+  setChatMessages,
+}) => {
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
     defaultValues: {
-			messageSend: "",
+      messageSend: "",
     },
   });
-	const { setValue } = form;
+  const { setValue } = form;
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "Mensaje enviado:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-		setValue("messageSend", "", { shouldValidate: false, shouldDirty: false });  }
+    const message = JSON.stringify(data.messageSend, null, 2);
+    setChatMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        type: "sent",
+        text: message,
+      },
+    ]);
+
+    setValue("messageSend", "", { shouldValidate: false, shouldDirty: false });
+  }
 
   return (
     <Form {...form}>
