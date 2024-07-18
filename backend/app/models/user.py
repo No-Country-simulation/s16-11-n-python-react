@@ -15,6 +15,7 @@ class User(Base):
     __tablename__ = "user"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[Optional[str]]
+    last_name: Mapped[Optional[str]]
     email: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
     is_admin: Mapped[Optional[bool]] = mapped_column(default=False)
