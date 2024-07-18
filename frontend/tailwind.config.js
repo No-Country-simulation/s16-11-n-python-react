@@ -18,8 +18,9 @@ module.exports = {
     },
     extend: {
       maxWidth: {
+        '8xl': '88rem',
+        1600: '1600px',
         desktop: '1920px',
-        '1600': '1600px'
       },
       keyframes: {
         'accordion-down': {
