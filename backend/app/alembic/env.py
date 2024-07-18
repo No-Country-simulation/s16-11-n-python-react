@@ -4,9 +4,8 @@ from sqlalchemy import pool, engine_from_config
 from core.config import settings
 from core.database import Base
 
-"""
-Importar todos los modelos
-"""
+from models.models import User, Video, Channel, Comment, Course, MyCourses, Rating
+
 from alembic import context
 
 # this is the Alembic Config object, which provides
