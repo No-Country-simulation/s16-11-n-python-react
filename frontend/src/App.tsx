@@ -12,7 +12,6 @@ function App() {
         <UserIcon />
       </header>
       <Router />
-      <div className="h-screen py-52 bg-red-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur officia dolor delectus. Eos eaque necessitatibus doloribus neque iusto ea quasi ex fuga tempora dicta corporis, libero repellendus asperiores saepe. Ratione!</div>
       <ChatBot />
       <Toaster />
     </ThemeProvider>

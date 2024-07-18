@@ -2,8 +2,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { InputTextChat } from "./InputTextChat";
+} from '@/components/ui/dropdown-menu';
+import { InputTextChat } from './InputTextChat';
 
 export const ChatBot: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ export const ChatBot: React.FC = () => {
         <div className="w-[90%] min-h-56 mb-2 mx-auto border-[1px] border-zinc-500 rounded-lg flex justify-center items-center">
           chatArea
         </div>
-				<InputTextChat />
+        <InputTextChat />
       </DropdownMenuContent>
     </DropdownMenu>
   );
