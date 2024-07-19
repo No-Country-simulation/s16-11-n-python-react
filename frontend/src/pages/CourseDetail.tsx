@@ -1,3 +1,4 @@
+import { useTheme } from '@/components/ThemeProvider';
 import { FaLinkedin, FaTwitch, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { DefaultParams, Link } from 'wouter';
@@ -8,6 +9,17 @@ interface Props {
 
 export function CourseDetail({ params }: Props) {
   const { id } = params as { id: string };
+  const { theme } = useTheme();
+
+  const titleClasses = 'text-4xl font-semibold';
+  const socialLogoClasses = 'text-5xl duration-300 hover:scale-125';
+  const courseColor = '#9d43de7a';
+  const backgroundClassesSection = {
+    background:
+      theme === 'dark'
+        ? `radial-gradient(circle at 0% 10%, ${courseColor}, #09090b 18%)`
+        : `radial-gradient(circle at 0% 10%, ${courseColor}, #fff 18%)`,
+  };
 
   const data: Record<string, Record<string, string | number>> = {
     a21: {
@@ -16,10 +28,6 @@ export function CourseDetail({ params }: Props) {
       lessons: 75,
     },
   };
-
-  const titleClasses = 'text-4xl font-semibold';
-  const socialLogoClasses = 'text-5xl  duration-300 hover:scale-125';
-
   const courses = new Array(58).fill(1);
 
   return (
@@ -35,7 +43,10 @@ export function CourseDetail({ params }: Props) {
           </p>
         </div>
       </section>
-      <section className="[background:radial-gradient(circle_at_0%_10%,#9d43de7a,#09090b_18%)] max-w-desktop mx-auto">
+      <section
+        className="max-w-desktop mx-auto"
+        style={backgroundClassesSection}
+      >
         <div className="flex items-start gap-36 max-w-8xl mx-auto pt-28 pb-10">
           <div className="flex-1 sticky transition-transform px-6 top-28">
             <img
@@ -63,7 +74,9 @@ export function CourseDetail({ params }: Props) {
               </div>
             </div>
             <p className="text-lg font-semibold">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.Voluptates adipisci blanditiis error eligendi veritatis ullam quisesse commodi fugit consequuntur. Repellat, at asperiores eaque
+              Lorem ipsum dolor sit amet consectetur, adipisicing
+              elit.Voluptates adipisci blanditiis error eligendi veritatis ullam
+              quisesse commodi fugit consequuntur. Repellat, at asperiores eaque
               dignissimos sed sapiente magni? Eaque, suscipit.
             </p>
           </div>
@@ -86,7 +99,7 @@ export function CourseDetail({ params }: Props) {
               {courses.map((_, idx) => (
                 <Link
                   key={idx}
-                  className="block my-2 py-2 bg-zinc-900 hover:bg-zinc-800 text-lg"
+                  className="block my-2 py-2 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-lg"
                   href={`/class/${idx}`}
                 >
                   Class {idx + 1}

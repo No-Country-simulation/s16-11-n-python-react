@@ -1,4 +1,4 @@
 TODO:
-  - Install ShadcnUI
   - Install motion
-  - Install router
+  - Install linter
+

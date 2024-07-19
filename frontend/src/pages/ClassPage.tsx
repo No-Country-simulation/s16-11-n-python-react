@@ -28,7 +28,7 @@ export function ClassPage({ params }: Props) {
             Volver
           </Link>
         </Button>
-        <div className="w-full aspect-video bg-white mt-6 rounded-md">
+        <div className="w-full aspect-video bg-white border border-gray-300 mt-6 rounded-md">
           <p className="text-black text-4xl">Video</p>
         </div>
         <div className="py-8 mt-4 border border-white">
@@ -39,9 +39,9 @@ export function ClassPage({ params }: Props) {
       </section>
       <section className="flex-[3] border border-zinc-500 rounded-xl px-3 pb-3 shrink-0">
         <h4 className="mt-5">Lista de contenidos</h4>
-        <div className="mt-4 pl-4 bg-zinc-950 pb-4 pt-4">
+        <div className="mt-4 pl-4 dark:bg-zinc-950 pb-4 pt-4">
           <h3 className="flex items-center gap-2">
-            <span className="bg-zinc-500 rounded-full inline-block p-[0.375rem]">
+            <span className="dark:bg-zinc-500 border border-zinc-500 rounded-full flex items-center justify-center h-7 w-7">
               <BsFlag className="text-md" />
             </span>
             <span>Ruta de conocimiento</span>
@@ -54,7 +54,7 @@ export function ClassPage({ params }: Props) {
               <Link
                 key={`td-${idx}`}
                 href={`/class/${idx}`}
-                className="p-2 text-lg flex justify-between items-center gap-6 hover:bg-zinc-800 transition-colors duration-150"
+                className="p-2 text-lg flex justify-between items-center gap-6 dark:hover:bg-zinc-800 hover:bg-zinc-400 transition-colors duration-150"
               >
                 <span className="flex items-center gap-3">
                   <p className="text-end w-8">{fillLeftZeros(idx + 1)}.</p>
