@@ -8,7 +8,7 @@ from .password import verify
 async def is_authenticate(
     email: str, password: str, db: AsyncSession = Depends(get_session)
 ):
-    user = await UserCrud(db).get_by_email("email", email)
+    user = await UserCrud(db).get_by_attribute("email", email)
     if not user or not verify(password, user.password):
         return False
-    return True
+    return user
