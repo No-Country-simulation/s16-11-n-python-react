@@ -25,11 +25,11 @@ const FormSchema = z.object({
     }),
 });
 interface InputTextChatProps {
-  setChatMessages: React.Dispatch<React.SetStateAction<TchatMessage[]>>;
+  updateChatMessages: React.Dispatch<React.SetStateAction<TchatMessage[]>>;
 }
 
 export const InputTextChat: React.FC<InputTextChatProps> = ({
-  setChatMessages,
+  updateChatMessages,
 }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -40,7 +40,7 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({
   const { setValue } = form;
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    setChatMessages((prevMessages) => [
+    updateChatMessages((prevMessages) => [
       ...prevMessages,
       {
         type: "sent",
