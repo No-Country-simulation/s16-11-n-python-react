@@ -40,12 +40,11 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({
   const { setValue } = form;
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const message = JSON.stringify(data.messageSend, null, 2);
     setChatMessages((prevMessages) => [
       ...prevMessages,
       {
         type: "sent",
-        text: message,
+        text: data.messageSend,
       },
     ]);
 
