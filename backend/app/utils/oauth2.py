@@ -25,13 +25,13 @@ async def create_acces_token(data: dict, expires_delta: timedelta | None = None)
     return encoded_jwt
 
 
-async def verify_token(token: str, credentials_excception):
+async def verify_token(token: str, credentials_exception):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         email: str = payload.get("email")
         if email is None:
-            raise credentials_excception
+            raise credentials_exception
         token_data = TokenData(email=email)
         return token_data
     except PyJWTError:
-        raise credentials_excception
+        raise credentials_exception
