@@ -12,5 +12,5 @@ class Course(Base):
     published_ad: Mapped[Date] = mapped_column(Date)
     is_active: Mapped[bool] = mapped_column(default=True)
 
-    channel_id: Mapped[int] = mapped_column(ForeignKey("channel.id"))
-    channel: Mapped[Channel] = relationship(back_populates="channel", lazy="selectin")
+    # channel_id: Mapped[int] = mapped_column(ForeignKey("channel.id"))
+    # channel: Mapped[Channel] = relationship(back_populates="channel", lazy="selectin")

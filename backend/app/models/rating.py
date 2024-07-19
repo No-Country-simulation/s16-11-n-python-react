@@ -8,3 +8,5 @@ class Rating(Base):
     __tablename__ = "rating"
     id: Mapped[int] = mapped_column(primary_key=True)
     start: Mapped[int]
+
+    # Faltan agregar las relaciones
