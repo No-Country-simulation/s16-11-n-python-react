@@ -40,8 +40,9 @@ const chatExample: TchatMessage[] = [
 
 export const ChatBot: React.FC = () => {
   const [chatMessages, setChatMessages] = useState(chatExample);
-  const updateChatMessages = (messsages) => setChatMessages(messages)
-  return (
+	const updateChatMessages = (updateFn: (prevMessages: TchatMessage[]) => TchatMessage[]) =>
+    setChatMessages((prevMessages) => updateFn(prevMessages));
+	return (
     <DropdownMenu>
       <DropdownMenuTrigger className="fixed bottom-10 right-10 w-24 h-24 rounded-full cursor-pointer hover:scale-105 hover:translate-x-1">
         <img src={chatbot} alt="Gif animado" />

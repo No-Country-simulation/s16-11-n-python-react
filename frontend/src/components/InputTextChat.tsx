@@ -25,7 +25,9 @@ const FormSchema = z.object({
     }),
 });
 interface InputTextChatProps {
-  updateChatMessages: React.Dispatch<React.SetStateAction<TchatMessage[]>>;
+  updateChatMessages: (
+    updateFn: (prevMessages: TchatMessage[]) => TchatMessage[]
+  ) => void;
 }
 
 export const InputTextChat: React.FC<InputTextChatProps> = ({
@@ -47,7 +49,6 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({
         text: data.messageSend,
       },
     ]);
-
     setValue("messageSend", "", { shouldValidate: false, shouldDirty: false });
   }
 
