@@ -7,7 +7,6 @@ class MyCoursesBase(BaseModel):
 
 
 class MyCoursesCreate(MyCoursesBase):
-    # courses: Ver como agregar un curso
     pass
 
 

@@ -1,8 +1,10 @@
 from api.dependencies.auth import validate_authenticate_user
 from api.dependencies.db import get_session
 from crud.user import UserCrud
+from crud.myCourses import MyCoursesCrud
 from fastapi import APIRouter, Depends, HTTPException, status
 from schemas.user import UserSchema, UserCreate
+from schemas.myCourse import MyCoursesCreate
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from utils.password import hash
 
@@ -10,7 +12,10 @@ router = APIRouter()
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=UserSchema)
-async def create_user(user_create: UserCreate, db: AsyncSession = Depends(get_session)):
+async def create_user(
+    user_create: UserCreate,
+    db: AsyncSession = Depends(get_session),
+):
     exist_user = await UserCrud(db).get_by_attribute("email", user_create.email)
     if exist_user:
         raise HTTPException(
@@ -20,6 +25,13 @@ async def create_user(user_create: UserCreate, db: AsyncSession = Depends(get_se
     hashed_password = await hash(user_create.password)
     user_create.password = hashed_password
     new_user = await UserCrud(db).create(user_create)
+    user_id = new_user.id
+
+    new_my_courses = await MyCoursesCrud(db).create(
+        MyCoursesCreate.model_copy(update={"user_id": user_id})
+    )
+    # my_courses_create = MyCoursesCreate(progress=0, user_id=user_id)
+    # new_my_courses = await MyCoursesCrud(db).create(my_courses_create)
 
     return new_user
 
