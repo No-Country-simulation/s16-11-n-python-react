@@ -4,7 +4,7 @@ from sqlalchemy import pool, engine_from_config
 from core.config import settings
 from core.database import Base
 
-from models.models import User, Video, Channel, Comment, Course, MyCourses, Rating
+from models.user import User  # , Video, Channel, Comment, Course, MyCourses, Rating
 
 from alembic import context
 
@@ -14,7 +14,7 @@ config = context.config
 
 config.set_main_option(
     "sqlalchemy.url",
-    f"postgresql+psycopg://{settings['database_username']}:{settings['databse_password']}@{settings['database_host']}:{settings['database_port']}/{settings['database_name']}",
+    f"postgresql+psycopg://{settings['database_username']}:{settings['database_password']}@{settings['database_host']}:{settings['database_port']}/{settings['database_name']}",
 )
 
 # Interpret the config file for Python logging.
@@ -26,7 +26,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = Base.metadata
+target_metadata = [Base.metadata]
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

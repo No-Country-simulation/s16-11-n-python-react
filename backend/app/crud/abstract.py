@@ -113,6 +113,8 @@ class BaseCrud(ABC):
         instance = result.scalar().first()
 
         if instance:
+            # Comprobar como hacer la eliminación pasiva
+            # await instance.is_active = False
             await self.session.delete(instance)
             await self.session.commit()
 

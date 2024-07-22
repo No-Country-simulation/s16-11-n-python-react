@@ -28,13 +28,13 @@ class UserSchema(UserBase):
         from_attributes = True
 
 
-class UserUpdateSchema(UserBase):
+class UserUpdate(UserBase):
     email: EmailStr | None = None
 
     class Config:
         from_attributes = True
 
 
-class UserLoginSchema(BaseModel):
+class UserLogin(BaseModel):
     emain: EmailStr
     password: str
