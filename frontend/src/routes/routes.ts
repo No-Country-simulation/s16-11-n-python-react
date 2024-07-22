@@ -1,4 +1,4 @@
-import { About, CourseDetail, ErrorPage, Home, ClassPage } from '../pages';
+import { About, CourseDetail, ErrorPage, Home, ClassPage, Courses } from '../pages';
 
 export const routes = [
   {
@@ -16,6 +16,10 @@ export const routes = [
   {
     path: '/class/:id',
     component: ClassPage,
+  },
+  {
+    path: '/courses',
+    component: Courses,
   },
   {
     errorPage: true,

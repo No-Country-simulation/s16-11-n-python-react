@@ -24,12 +24,12 @@ export const DropdownMenuUser: React.FC = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div>
-          <FaUser className="p-1 w-7 h-7 cursor-pointer text-blue-400 hover:text-blue-500" />
+          <FaUser className="p-1 w-7 h-7 cursor-pointer text-[#006E2F] hover:text-[#2b8653]" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
-          <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">
+          <div className="w-12 h-12 rounded-full bg-[#006E2F] mr-4 py-2 flex justify-center items-center">
             Avatar
           </div>
           <div className="flex flex-col">
