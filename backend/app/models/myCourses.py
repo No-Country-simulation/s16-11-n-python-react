@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, List, Optional
 from core.database import Base
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 if TYPE_CHECKING:
@@ -14,13 +14,15 @@ else:
 class MyCourses(Base):
     __tablename__ = "my_courses"
     id: Mapped[int] = mapped_column(primary_key=True)
-    progress: Mapped[int]
+    progress: Mapped[Optional[int]] = mapped_column(default=0)
     is_active: Mapped[Optional[bool]] = mapped_column(default=True)
 
-    # user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("user.id"))
-    # user: Mapped[User] = relationship(
-    #     back_populates="my_courses",
-    # )
-    # courses: Mapped[List[Course]] = relationship(
+    user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("user.id"))
+    user: Mapped[User] = relationship(
+        back_populates="my_courses",
+    )
+    # courses: Mapped[Opcional[List[Course]]] = relationship(
     #     back_populates="my_courses", lazy="selectin"
     # )
+
+    __table_args__ = (UniqueConstraint("user_id"),)
