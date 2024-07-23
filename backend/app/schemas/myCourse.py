@@ -2,12 +2,11 @@ from pydantic import BaseModel
 
 
 class MyCoursesBase(BaseModel):
-    user_id: int
+    user_id: int | None = None
     progress: int | None = None
 
 
 class MyCoursesCreate(MyCoursesBase):
-    # courses: Ver como agregar un curso
     pass
 
 

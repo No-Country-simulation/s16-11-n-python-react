@@ -4,7 +4,14 @@ from sqlalchemy import pool, engine_from_config
 from core.config import settings
 from core.database import Base
 
-from models.user import User  # , Video, Channel, Comment, Course, MyCourses, Rating
+from models.user import User
+from models.myCourses import MyCourses
+
+# from models.channel import Channel
+# from models.comment import Comment
+# from models.course import Course
+# from models.video import Video
+# from models.rating import Rating
 
 from alembic import context
 

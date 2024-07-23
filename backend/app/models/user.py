@@ -26,6 +26,8 @@ class User(Base):
     Se comentan para hacer una migración de solo el usuario
     """
     # comment: Mapped[Comment] = relationship(back_populates="user")
-    # my_courses: Mapped[List[MyCourses]] = relationship(
-    #     back_populates="user", lazy="selectin"
-    # )
+    my_courses: Mapped[MyCourses] = relationship(
+        back_populates="user",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )
