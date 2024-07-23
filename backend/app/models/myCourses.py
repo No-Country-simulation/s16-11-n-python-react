@@ -20,6 +20,7 @@ class MyCourses(Base):
     user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("user.id"))
     user: Mapped[User] = relationship(
         back_populates="my_courses",
+        lazy="selectin",
     )
     # courses: Mapped[Opcional[List[Course]]] = relationship(
     #     back_populates="my_courses", lazy="selectin"
