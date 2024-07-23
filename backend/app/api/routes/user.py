@@ -27,11 +27,8 @@ async def create_user(
     new_user = await UserCrud(db).create(user_create)
     user_id = new_user.id
 
-    new_my_courses = await MyCoursesCrud(db).create(
-        MyCoursesCreate.model_copy(update={"user_id": user_id})
-    )
-    # my_courses_create = MyCoursesCreate(progress=0, user_id=user_id)
-    # new_my_courses = await MyCoursesCrud(db).create(my_courses_create)
+    my_courses_create = MyCoursesCreate(user_id=user_id)
+    await MyCoursesCrud(db).create(my_courses_create)
 
     return new_user
 
