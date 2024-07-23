@@ -33,7 +33,11 @@ async def create_user(
     return new_user
 
 
-@router.get("/{user_id}/", status_code=status.HTTP_200_OK)
+@router.get(
+    "/{user_id}/",
+    status_code=status.HTTP_200_OK,
+    response_model=UserSchema,
+)
 async def get_user_id(
     user_id: int,
     db: AsyncSession = Depends(get_session),
