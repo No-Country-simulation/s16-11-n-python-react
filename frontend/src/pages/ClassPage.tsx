@@ -1,10 +1,10 @@
-import { DefaultParams, Link } from 'wouter';
-import { Button } from '@/components/ui/button';
-import { GoArrowLeft } from 'react-icons/go';
-import { BsFlag } from 'react-icons/bs';
-import { FaCheckCircle } from 'react-icons/fa';
-import { fillLeftZeros } from '@/utils/formatStrings';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { DefaultParams, Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { GoArrowLeft } from "react-icons/go";
+import { BsFlag } from "react-icons/bs";
+import { FaCheckCircle } from "react-icons/fa";
+import { fillLeftZeros } from "@/utils/formatStrings";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Props {
   params: DefaultParams;
@@ -18,11 +18,7 @@ export function ClassPage({ params }: Props) {
   return (
     <main className="max-w-8xl mx-auto flex gap-6 font-semibold pt-14">
       <section className="flex-[7]">
-        <Button
-          asChild
-          variant="outline"
-          className="text-xl border dark:border-zinc-500 px-4 py-6"
-        >
+        <Button asChild variant="outline" className="text-xl border dark:border-zinc-500 px-4 py-6">
           <Link href="/course/a21">
             <GoArrowLeft className="text-2xl mr-2" />
             Volver
@@ -32,9 +28,7 @@ export function ClassPage({ params }: Props) {
           <p className="text-black text-4xl">Video</p>
         </div>
         <div className="py-8 mt-4 border border-white">
-          <h1 className="text-3xl">
-            Video name {id} - Lorem ipsum dolor sit amet consectetur.
-          </h1>
+          <h1 className="text-3xl">Video name {id} - Lorem ipsum dolor sit amet consectetur.</h1>
         </div>
       </section>
       <section className="flex-[3] border border-zinc-500 rounded-xl px-3 pb-3 shrink-0">
@@ -60,11 +54,7 @@ export function ClassPage({ params }: Props) {
                   <p className="text-end w-8">{fillLeftZeros(idx + 1)}.</p>
                   <p>Curso lorem {idx + 1} lorem</p>
                 </span>
-                <FaCheckCircle
-                  className={`text-xl flex-none ${
-                    idx < 10 ? 'text-green-500' : 'text-white'
-                  }`}
-                />
+                <FaCheckCircle className={`text-xl flex-none ${idx < 10 ? "text-green-500" : "text-white"}`} />
               </Link>
             ))}
           </div>

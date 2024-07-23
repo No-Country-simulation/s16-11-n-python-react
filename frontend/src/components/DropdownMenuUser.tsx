@@ -29,9 +29,7 @@ export const DropdownMenuUser: React.FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
-          <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">
-            Avatar
-          </div>
+          <div className="w-12 h-12 rounded-full bg-slate-400 mr-4 py-2 flex justify-center items-center">Avatar</div>
           <div className="flex flex-col">
             <div className="text-[15px]">{name}</div>
             <div className="text-[12px]">{email}</div>
@@ -39,14 +37,8 @@ export const DropdownMenuUser: React.FC = () => {
         </DropdownMenuLabel>
         <DropdownMenuLabel className="flex items-center justify-between my-2">
           <div className="flex items-center">
-            {theme === "dark" ? (
-              <FaRegMoon className="p-1 w-7 h-7" />
-            ) : (
-              <FaRegSun className="p-1 w-7 h-7" />
-            )}
-            <p className="pl-2 font-bold">
-              Tema {theme === "dark" ? "Oscuro" : "Claro"}
-            </p>
+            {theme === "dark" ? <FaRegMoon className="p-1 w-7 h-7" /> : <FaRegSun className="p-1 w-7 h-7" />}
+            <p className="pl-2 font-bold">Tema {theme === "dark" ? "Oscuro" : "Claro"}</p>
           </div>
           <Switch onClick={handleChangeTheme} />
         </DropdownMenuLabel>
