@@ -17,13 +17,14 @@ class Course(Base):
     __tablename__ = "course"
     id: Mapped[int] = mapped_column(primary_key=True)
     tittle: Mapped[str]
+    thumbnail: Mapped[str]
     description: Mapped[Optional[str]]
     published_ad: Mapped[Date] = mapped_column(Date)
     is_active: Mapped[bool] = mapped_column(default=True)
 
     channel_id: Mapped[Optional[int]] = mapped_column(ForeignKey("channel.id"))
 
-    my_courses_id: Mapped[int] = mapped_column(ForeignKey("my_courses.id"))
+    my_courses_id: Mapped[Optional[int]] = mapped_column(ForeignKey("my_courses.id"))
 
     channel: Mapped[Channel] = relationship(
         back_populates="course",

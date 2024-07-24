@@ -3,8 +3,9 @@ from datetime import date
 
 
 class CourseBase(BaseModel):
-    channel_id: int
+    channel_id: int | None = None
     tittle: str
+    thumbnail: str
     description: str | None = None
     published_ad: date
 
