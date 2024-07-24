@@ -14,7 +14,7 @@ class Video(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     tittle: Mapped[str]
     description: Mapped[Optional[str]]
-    image_url: Mapped[str]
+    thumbnail: Mapped[str]
     published_ad: Mapped[Date] = mapped_column(Date)
     check: Mapped[bool] = mapped_column(default=False)
     is_active: Mapped[bool] = mapped_column(default=False)
