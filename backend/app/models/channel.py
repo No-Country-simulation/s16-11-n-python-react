@@ -15,7 +15,7 @@ class Channel(Base):
     channel_name: Mapped[str]
     description: Mapped[Optional[str]]
     custom_url: Mapped[str] = mapped_column(unique=True)
-    image: Mapped[str]
+    thumbnail: Mapped[str]
     country: Mapped[str]
     views: Mapped[Optional[int]]
     subs: Mapped[Optional[int]]
