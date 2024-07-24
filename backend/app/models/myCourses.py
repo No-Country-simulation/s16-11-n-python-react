@@ -22,7 +22,7 @@ class MyCourses(Base):
         back_populates="my_courses",
         lazy="selectin",
     )
-    courses: Mapped[Optional[List[Course]]] = relationship(
+    course: Mapped[Optional[List[Course]]] = relationship(
         back_populates="my_courses", lazy="selectin"
     )
 
