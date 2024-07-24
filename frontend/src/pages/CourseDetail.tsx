@@ -1,7 +1,7 @@
-import { useTheme } from "@/components/ThemeProvider";
-import { FaLinkedin, FaTwitch, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { DefaultParams, Link } from "wouter";
+import { useTheme } from '@/components/ThemeProvider';
+import { FaLinkedin, FaTwitch, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { DefaultParams, Link } from 'wouter';
 
 interface Props {
   params: DefaultParams;
@@ -11,19 +11,19 @@ export function CourseDetail({ params }: Props) {
   const { id } = params as { id: string };
   const { theme } = useTheme();
 
-  const titleClasses = "text-4xl font-semibold";
-  const socialLogoClasses = "text-5xl duration-300 hover:scale-125";
-  const courseColor = "#9d43de7a";
+  const titleClasses = 'text-4xl font-semibold';
+  const socialLogoClasses = 'text-5xl duration-300 hover:scale-125';
+  const courseColor = '#9d43de7a';
   const backgroundClassesSection = {
     background:
-      theme === "dark"
+      theme === 'dark'
         ? `radial-gradient(circle at 0% 10%, ${courseColor}, #09090b 18%)`
         : `radial-gradient(circle at 0% 10%, ${courseColor}, #fff 18%)`,
   };
 
   const data: Record<string, Record<string, string | number>> = {
     a21: {
-      title: "Python desde Cero hasta Backend",
+      title: 'Python desde Cero hasta Backend',
       hours: 37,
       lessons: 75,
     },

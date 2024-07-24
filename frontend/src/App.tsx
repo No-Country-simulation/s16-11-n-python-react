@@ -1,8 +1,8 @@
-import { ThemeProvider } from "./components/ThemeProvider";
-import Router from "./routes/Router";
-import { Toaster } from "./components/ui/toaster";
-import { UserIcon } from "./components/UserIcon";
-import { ChatBot } from "./components/ChatBot";
+import { ThemeProvider } from './components/ThemeProvider';
+import Router from './routes/Router';
+import { Toaster } from './components/ui/toaster';
+import { UserIcon } from './components/UserIcon';
+import { ChatBot } from './components/ChatBot';
 
 function App() {
   return (

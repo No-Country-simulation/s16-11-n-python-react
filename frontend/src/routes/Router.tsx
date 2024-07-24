@@ -1,5 +1,5 @@
-import { Route, Switch } from "wouter";
-import { routes } from "./routes";
+import { Route, Switch } from 'wouter';
+import { routes } from './routes';
 
 export default function Router() {
   return (

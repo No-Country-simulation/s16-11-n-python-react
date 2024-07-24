@@ -1,10 +1,10 @@
-import { DefaultParams, Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { GoArrowLeft } from "react-icons/go";
-import { BsFlag } from "react-icons/bs";
-import { FaCheckCircle } from "react-icons/fa";
-import { fillLeftZeros } from "@/utils/formatStrings";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { DefaultParams, Link } from 'wouter';
+import { Button } from '@/components/ui/button';
+import { GoArrowLeft } from 'react-icons/go';
+import { BsFlag } from 'react-icons/bs';
+import { FaCheckCircle } from 'react-icons/fa';
+import { fillLeftZeros } from '@/utils/formatStrings';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Props {
   params: DefaultParams;
@@ -42,7 +42,7 @@ export function ClassPage({ params }: Props) {
           </h3>
           <h2 className="text-2xl mt-2">Curso {id}</h2>
         </div>
-        <ScrollArea className="w-full aspect-[9/11.5] mt-4 ">
+        <ScrollArea className="w-full aspect-[9/11.5] mt-4">
           <div className=" flex flex-col gap-3 pl-2 pr-4">
             {videos.map((_, idx) => (
               <Link
@@ -54,7 +54,7 @@ export function ClassPage({ params }: Props) {
                   <p className="text-end w-8">{fillLeftZeros(idx + 1)}.</p>
                   <p>Curso lorem {idx + 1} lorem</p>
                 </span>
-                <FaCheckCircle className={`text-xl flex-none ${idx < 10 ? "text-green-500" : "text-white"}`} />
+                <FaCheckCircle className={`text-xl flex-none ${idx < 10 ? 'text-green-500' : 'text-white'}`} />
               </Link>
             ))}
           </div>

@@ -1,21 +1,21 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
-import { ButtonLoading } from "./ModalForm";
-import { useState } from "react";
-import { useStore } from "@/contexts/store";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/use-toast';
+import { ButtonLoading } from './ModalForm';
+import { useState } from 'react';
+import { useStore } from '@/contexts/store';
 
 interface FormLogInProps {
   handleRegister: () => void;
 }
 
 const formSchema = z.object({
-  email: z.string().email("Email invalido."),
-  password: z.string().min(6, "La contraseña minima de 6 caracteres."),
+  email: z.string().email('Email invalido.'),
+  password: z.string().min(6, 'La contraseña minima de 6 caracteres.'),
 });
 
 export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
@@ -28,8 +28,8 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -37,7 +37,7 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
     handleLoading();
     setLogin();
     toast({
-      title: "Su formulario fue enviado:",
+      title: 'Su formulario fue enviado:',
       description: (
         <pre className="mt-2 w-[340px] rounded-md p-4 z-20">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -90,7 +90,7 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
           <p className="text-[#535456] text-pretty">
             ¿Todavía no tienes una cuenta?
             <b className="text-white cursor-pointer" onClick={handleRegister}>
-              {" Créala aquí"}
+              {' Créala aquí'}
             </b>
           </p>
         </div>

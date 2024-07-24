@@ -1,10 +1,10 @@
-import { FormSignIn } from "./FormSignIn";
-import React, { useState } from "react";
-import { FormLogIn } from "./FormLogIn";
-import { ReloadIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { FaUser } from "react-icons/fa";
+import { FormSignIn } from './FormSignIn';
+import React, { useState } from 'react';
+import { FormLogIn } from './FormLogIn';
+import { ReloadIcon } from '@radix-ui/react-icons';
+import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { FaUser } from 'react-icons/fa';
 
 export function ButtonLoading() {
   return (
