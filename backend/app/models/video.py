@@ -21,5 +21,5 @@ class Video(Base):
 
     course_id: Mapped[int] = mapped_column(ForeignKey("course.id"))
     course: Mapped[Course] = relationship(
-        back_populates="course",
+        back_populates="video",
     )

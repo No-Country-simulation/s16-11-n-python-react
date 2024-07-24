@@ -22,13 +22,15 @@ class Course(Base):
     is_active: Mapped[bool] = mapped_column(default=True)
 
     channel_id: Mapped[int] = mapped_column(ForeignKey("channel.id"))
-    channel: Mapped[Channel] = relationship(
-        back_populates="channel",
-    )
 
     my_courses_id: Mapped[int] = mapped_column(ForeignKey("my_courses.id"))
+
+    channel: Mapped[Channel] = relationship(
+        back_populates="course",
+    )
+
     my_courses: Mapped[MyCourses] = relationship(
-        back_populates="my_courses",
+        back_populates="course",
     )
 
     video: Mapped[List[Video]] = relationship(
