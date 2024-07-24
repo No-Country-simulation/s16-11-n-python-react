@@ -9,9 +9,7 @@ export interface UserState {
   setEmail: (email: string) => void;
 }
 
-export const createUserSlice: StateCreator<UserState, [], [], UserState> = (
-  set
-) => ({
+export const createUserSlice: StateCreator<UserState, [], [], UserState> = (set) => ({
   name: null,
   user: null,
   email: null,

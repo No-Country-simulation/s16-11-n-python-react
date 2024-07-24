@@ -1,9 +1,5 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { InputTextChat } from './InputTextChat';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { InputTextChat } from "./InputTextChat";
 
 export const ChatBot: React.FC = () => {
   return (
