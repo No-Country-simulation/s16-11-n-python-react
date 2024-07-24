@@ -21,7 +21,7 @@ class Course(Base):
     published_ad: Mapped[Date] = mapped_column(Date)
     is_active: Mapped[bool] = mapped_column(default=True)
 
-    channel_id: Mapped[int] = mapped_column(ForeignKey("channel.id"))
+    channel_id: Mapped[Optional[int]] = mapped_column(ForeignKey("channel.id"))
 
     my_courses_id: Mapped[int] = mapped_column(ForeignKey("my_courses.id"))
 
