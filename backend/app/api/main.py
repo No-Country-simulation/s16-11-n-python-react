@@ -1,4 +1,4 @@
-from api.routes import user, auth, myCourses, channel, course
+from api.routes import user, auth, myCourses, channel, course, video
 from fastapi import APIRouter, status
 
 api_router = APIRouter()
@@ -41,6 +41,14 @@ api_router.include_router(
     course.router,
     prefix="/api/courses",
     tags=["Courses"],
+    responses={
+        status.HTTP_404_NOT_FOUND: {"description": "Not found"},
+    },
+)
+api_router.include_router(
+    video.router,
+    prefix="/api/videos",
+    tags=["Videos"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
     },
