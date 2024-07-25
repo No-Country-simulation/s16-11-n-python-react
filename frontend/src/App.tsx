@@ -9,14 +9,14 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <header className="sticky top-0 z-50 bg-[#131517] max-w-1600 mx-auto h-16 flex justify-between px-10 items-center dark:bg-black/95">
-      <Link href="/">
-        <h1 className="text-white">
-          Tech<strong className="text-[#006E2F]">IA</strong>cademic
-        </h1>
-      </Link>
+        <Link href="/">
+          <h1 className="text-white">
+            Tech<strong className="text-[#006E2F]">IA</strong>cademic
+          </h1>
+        </Link>
         <Link
           className="block my-2 py-2 hover:text-zinc-300 text-white text-lg"
-          href="/courses"
+          to="/courses/courses-in-progress"
         >
           Cursos
         </Link>

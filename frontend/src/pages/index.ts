@@ -4,3 +4,6 @@ export { About } from './About';
 export { CourseDetail } from './CourseDetail';
 export { ClassPage } from './ClassPage';
 export { Courses } from './Courses';
+export { CoursesInProgress } from './CoursesInProgress';
+export { FinishCourses } from './FinishCourses';
+export { NewCourses } from './NewCourses';

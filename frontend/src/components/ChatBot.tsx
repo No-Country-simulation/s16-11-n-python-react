@@ -6,7 +6,7 @@ import {
 import { InputTextChat } from "./InputTextChat";
 import { ChatArea } from "./ChatArea";
 import { useState } from "react";
-import chatbot from "../../public/chatbot.png";
+import chatbot from "/chatbot.png";
 
 export interface TchatMessage {
   type: "received" | "sent";
@@ -45,7 +45,7 @@ export const ChatBot: React.FC = () => {
 	return (
     <DropdownMenu>
       <DropdownMenuTrigger className="fixed bottom-10 right-10 w-24 h-24 rounded-full cursor-pointer hover:scale-105 hover:translate-x-1">
-        <img src={chatbot} alt="Gif animado" />
+        <img src={chatbot} alt="avatar chatbot" />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[322px] flex flex-col py-2 mr-10">
         <ChatArea chatMessages={chatMessages} />
