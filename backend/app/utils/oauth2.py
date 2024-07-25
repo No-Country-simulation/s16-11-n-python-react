@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
 TOKEN_EXPIRE = os.getenv("TOKEN_EXPIRE")
 
-oauth2_schema = OAuth2PasswordBearer(tokenUrl="/api/auth/token")
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="/api/login")
 
 
 async def create_acces_token(data: dict, expires_delta: timedelta | None = None):
