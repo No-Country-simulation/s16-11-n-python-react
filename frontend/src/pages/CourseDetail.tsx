@@ -87,10 +87,10 @@ export function CourseDetail({ params }: Props) {
               <div className="grid grid-cols-2 gap-6">
                 {courses.map((_, idx) => (
                   <div key={idx} className="flex flex-col items-start gap-2">
-                    <Link className="aspect-video w-full bg-zinc-600" href={`/class/${idx}`}>
+                    <Link className="aspect-video w-full bg-zinc-600" href={`/clase/${idx}`}>
                       <img src="/" alt={`Thumbnail of the course ${idx}`} className="block" />
                     </Link>
-                    <Link className="text-lg font-semibold hover:underline" href={`/class/${idx}`}>
+                    <Link className="text-lg font-semibold hover:underline" href={`/clase/${idx}`}>
                       Class {idx + 1}
                     </Link>
                   </div>

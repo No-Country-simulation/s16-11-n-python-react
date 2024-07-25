@@ -35,7 +35,7 @@ export function ClassPage({ params }: Props) {
       <section className="flex-[8]">
         <div className="flex justify-between">
           <Button asChild variant="outline" className="text-xl border dark:border-zinc-500 px-4 py-6">
-            <Link href="/course/a21">
+            <Link href="/curso/a21">
               <GoArrowLeft className="text-2xl mr-2" />
               Volver
             </Link>
@@ -74,7 +74,7 @@ export function ClassPage({ params }: Props) {
               </span>
               <span>Ruta de conocimiento</span>
             </h3>
-            <h2 className="text-2xl mt-2">Nombre del Curso {id}</h2>
+            <h2 className="text-2xl mt-2">Nombre del Curso 21</h2>
           </div>
           <ScrollArea className="w-full aspect-[9/13] mt-4">
             <div className="flex flex-col gap-3 pr-3">
@@ -82,8 +82,8 @@ export function ClassPage({ params }: Props) {
                 <Link
                   key={`td-${idx}`}
                   ref={isCurrentClass(idx) ? classRef : undefined}
-                  href={`/class/${idx}`}
-                  className={`p-2 text-lg flex justify-between items-center gap-6 transition-colors duration-150 dark:hover:bg-zinc-700 hover:bg-zinc-400 ${isCurrentClass(idx) ? ' bg-zinc-200 dark:bg-zinc-800 rounded-lg' : ''}`}
+                  href={`/clase/${idx}`}
+                  className={`p-2 text-lg flex justify-between items-center gap-6 transition-colors duration-150 dark:hover:bg-zinc-700 hover:bg-zinc-300 ${isCurrentClass(idx) ? ' bg-zinc-200 dark:bg-zinc-800 rounded-lg' : ''}`}
                 >
                   <span className="flex items-center gap-2">
                     <p className="text-end w-8">{fillLeftZeros(idx + 1)}.</p>
@@ -94,7 +94,7 @@ export function ClassPage({ params }: Props) {
                     />
                     <p>Curso lorem {idx + 1} lorem</p>
                   </span>
-                  <FaCheckCircle className={`text-xl flex-none ${idx < 10 ? 'text-green-500' : 'text-white'}`} />
+                  <FaCheckCircle className={`text-xl flex-none ${idx < 10 ? 'text-green-500' : 'text-zinc-400 dark:text-white'}`} />
                 </Link>
               ))}
             </div>

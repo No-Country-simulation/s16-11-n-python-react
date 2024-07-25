@@ -14,7 +14,7 @@ function App() {
             Tech<strong className="text-[#006E2F]">IA</strong>cademic
           </h1>
         </Link>
-        <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/courses/courses-in-progress">
+        <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/cursos/cursos-en-progreso">
           Cursos
         </Link>
         <UserIcon />
