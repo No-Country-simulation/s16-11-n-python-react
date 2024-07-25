@@ -13,14 +13,19 @@ export const ChatArea: React.FC<ChatAreaProp> = ({ chatMessages }) => {
       scrollRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
-      }); //esta funcion escrolea hasta el final del chat
+      });
     }
   }, [chatMessages]);
 
   return (
     <ScrollArea className="w-full h-56 mb-2 mx-auto flex justify-center items-center p-3 overflow-y-auto">
-      {chatMessages.map((message) => (
-        <ChatMessage type={message.type} text={message.text} scrollRef={scrollRef} />
+      {chatMessages.map((message, index) => (
+        <ChatMessage
+          key={message.id}
+          type={message.type}
+          text={message.text}
+          scrollRef={index === chatMessages.length - 1 ? scrollRef : undefined}
+        />
       ))}
     </ScrollArea>
   );
