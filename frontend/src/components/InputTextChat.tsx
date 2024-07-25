@@ -1,12 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
 import { FaPaperPlane } from 'react-icons/fa';
+import { TchatMessage } from './ChatBot';
 
 const FormSchema = z.object({
   messageSend: z
@@ -18,8 +17,11 @@ const FormSchema = z.object({
       message: 'No puede contener mas de 250 caracteres',
     }),
 });
+interface InputTextChatProps {
+  updateChatMessages: (updateFn: (prevMessages: TchatMessage[]) => TchatMessage[]) => void;
+}
 
-export const InputTextChat: React.FC = () => {
+export const InputTextChat: React.FC<InputTextChatProps> = ({ updateChatMessages }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -29,14 +31,13 @@ export const InputTextChat: React.FC = () => {
   const { setValue } = form;
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'Mensaje enviado:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    updateChatMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        type: 'sent',
+        text: data.messageSend,
+      },
+    ]);
     setValue('messageSend', '', { shouldValidate: false, shouldDirty: false });
   }
 
