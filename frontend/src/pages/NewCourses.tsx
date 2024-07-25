@@ -26,7 +26,7 @@ export const NewCourses = () => {
         <div className="w-[80%] mx-auto">
           <h2 className="text-lg font-bold p-5">Cursos nuevos</h2>
           <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Array.from({ length: 9 }).map((_, index) => (
+            {Array.from({ length: 15 }).map((_, index) => (
               <Card className="flex flex-col justify-around md:mx-3 mx-auto w-[263px] h-[147px] mb-5">
                 <CardHeader>
                   <CardTitle>Course {index + 1} Title</CardTitle>
