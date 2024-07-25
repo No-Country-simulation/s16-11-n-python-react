@@ -13,7 +13,7 @@ from utils.user import is_authenticate
 router = APIRouter()
 
 
-@router.post("/token/", response_model=Token)
+@router.post("/login/", response_model=Token)
 async def login(
     user: UserLogin = Depends(OAuth2PasswordRequestForm),
     db: AsyncSession = Depends(get_session),
