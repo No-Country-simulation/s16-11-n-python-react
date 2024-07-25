@@ -5,7 +5,7 @@ export function Home() {
   return (
     <>
       <Button asChild>
-        <Link href="/course/a21" className="inline-block">
+        <Link href="/curso/a21" className="inline-block">
           Curso
         </Link>
       </Button>

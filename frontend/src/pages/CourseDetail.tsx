@@ -1,4 +1,5 @@
 import { useTheme } from '@/components/ThemeProvider';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { FaLinkedin, FaTwitch, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { DefaultParams, Link } from 'wouter';
@@ -12,13 +13,12 @@ export function CourseDetail({ params }: Props) {
   const { theme } = useTheme();
 
   const titleClasses = 'text-4xl font-semibold';
-  const socialLogoClasses = 'text-5xl duration-300 hover:scale-125';
+  const socialLogoClasses = 'text-5xl transition-transform duration-300 hover:scale-125';
   const courseColor = '#9d43de7a';
-  const backgroundClassesSection = {
-    background:
-      theme === 'dark'
-        ? `radial-gradient(circle at 0% 10%, ${courseColor}, #09090b 18%)`
-        : `radial-gradient(circle at 0% 10%, ${courseColor}, #fff 18%)`,
+  const backgroundColor = theme === 'dark' ? '#09090b' : '#fff';
+
+  const backgroundGradient = {
+    background: `radial-gradient(circle at 0% 10%, ${courseColor}, ${backgroundColor} 18%)`,
   };
 
   const data: Record<string, Record<string, string | number>> = {
@@ -41,9 +41,9 @@ export function CourseDetail({ params }: Props) {
           <p className="text-4xl text-zinc-400 mt-5 font-bold">{data[id]?.lessons} lecciones</p>
         </div>
       </section>
-      <section className="max-w-desktop mx-auto" style={backgroundClassesSection}>
+      <section className="max-w-desktop mx-auto" style={backgroundGradient}>
         <div className="flex items-start gap-36 max-w-8xl mx-auto pt-28 pb-10">
-          <div className="flex-1 sticky transition-transform px-6 top-28">
+          <div className="flex-1 px-6 top-28 sticky">
             <img
               src="https://yt3.ggpht.com/ytc/AIdro_lPBcTSzb5NqMhKQSo6aaTPcnPM2EZhvhdcQi0YvPmflQ=s800-c-k-c0x00ffffff-no-rj"
               alt="photo of midu"
@@ -52,17 +52,17 @@ export function CourseDetail({ params }: Props) {
             <div className="px-4">
               <h2 className="text-3xl text-center mt-6 font-bold">Miguel Angel Duran</h2>
               <div className="flex justify-between my-10">
-                <a href="/">
-                  <FaYoutube className={socialLogoClasses} />
+                <a href="/" className={socialLogoClasses}>
+                  <FaYoutube />
                 </a>
-                <a href="/">
-                  <FaLinkedin className={socialLogoClasses} />
+                <a href="/" className={socialLogoClasses}>
+                  <FaLinkedin />
                 </a>
-                <a href="/">
-                  <FaXTwitter className={socialLogoClasses} />
+                <a href="/" className={socialLogoClasses}>
+                  <FaXTwitter />
                 </a>
-                <a href="/">
-                  <FaTwitch className={socialLogoClasses} />
+                <a href="/" className={socialLogoClasses}>
+                  <FaTwitch />
                 </a>
               </div>
             </div>
@@ -72,7 +72,7 @@ export function CourseDetail({ params }: Props) {
               sapiente magni? Eaque, suscipit.
             </p>
           </div>
-          <div className="flex-[3]">
+          <div className="flex-[3] pb-6">
             <h2 className={titleClasses}>Descripcion del curso</h2>
             <p className="pl-4 mt-4 font-semibold">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod labore ipsam voluptates ratione, architecto
@@ -83,17 +83,20 @@ export function CourseDetail({ params }: Props) {
               recusandae officiis fuga possimus nesciunt!
             </p>
             <h3 className={`${titleClasses} mt-28 mb-4`}>Qué aprenderas</h3>
-            <div>
-              {courses.map((_, idx) => (
-                <Link
-                  key={idx}
-                  className="block my-2 py-2 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-lg"
-                  href={`/class/${idx}`}
-                >
-                  Class {idx + 1}
-                </Link>
-              ))}
-            </div>
+            <ScrollArea className="w-full aspect-[16/17] p-2 pr-4">
+              <div className="grid grid-cols-2 gap-6">
+                {courses.map((_, idx) => (
+                  <div key={idx} className="flex flex-col items-start gap-2">
+                    <Link className="aspect-video w-full bg-zinc-600" href={`/clase/${idx}`}>
+                      <img src="/" alt={`Thumbnail of the course ${idx}`} className="block" />
+                    </Link>
+                    <Link className="text-lg font-semibold hover:underline" href={`/clase/${idx}`}>
+                      Class {idx + 1}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
           </div>
         </div>
       </section>

@@ -16,10 +16,10 @@ export function ButtonLoading() {
 }
 
 export const ModalForm: React.FC = () => {
-  const [isUser, setisUser] = useState(true);
+  const [toggleForm, setToggleForm] = useState(true);
 
   const handleRegister = () => {
-    setisUser(!isUser);
+    setToggleForm(!toggleForm);
   };
 
   return (
@@ -37,7 +37,7 @@ export const ModalForm: React.FC = () => {
         </SheetHeader>
         <div className="grid gap-4 py-1">
           <div className=" h-full w-full flex justify-center flex-col items-center">
-            {isUser ? <FormLogIn handleRegister={handleRegister} /> : <FormSignIn handleRegister={handleRegister} />}
+            {toggleForm ? <FormLogIn handleRegister={handleRegister} /> : <FormSignIn handleRegister={handleRegister} />}
           </div>
         </div>
       </SheetContent>
