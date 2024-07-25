@@ -38,15 +38,10 @@ export function CourseDetail({ params }: Props) {
             Curso de {data[id]?.title}
           </h1>
           <p className="text-3xl font-bold mt-3">{data[id]?.hours} horas</p>
-          <p className="text-4xl text-zinc-400 mt-5 font-bold">
-            {data[id]?.lessons} lecciones
-          </p>
+          <p className="text-4xl text-zinc-400 mt-5 font-bold">{data[id]?.lessons} lecciones</p>
         </div>
       </section>
-      <section
-        className="max-w-desktop mx-auto"
-        style={backgroundClassesSection}
-      >
+      <section className="max-w-desktop mx-auto" style={backgroundClassesSection}>
         <div className="flex items-start gap-36 max-w-8xl mx-auto pt-28 pb-10">
           <div className="flex-1 sticky transition-transform px-6 top-28">
             <img
@@ -55,9 +50,7 @@ export function CourseDetail({ params }: Props) {
               className="block w-full"
             />
             <div className="px-4">
-              <h2 className="text-3xl text-center mt-6 font-bold">
-                Miguel Angel Duran
-              </h2>
+              <h2 className="text-3xl text-center mt-6 font-bold">Miguel Angel Duran</h2>
               <div className="flex justify-between my-10">
                 <a href="/">
                   <FaYoutube className={socialLogoClasses} />
@@ -74,25 +67,20 @@ export function CourseDetail({ params }: Props) {
               </div>
             </div>
             <p className="text-lg font-semibold">
-              Lorem ipsum dolor sit amet consectetur, adipisicing
-              elit.Voluptates adipisci blanditiis error eligendi veritatis ullam
-              quisesse commodi fugit consequuntur. Repellat, at asperiores eaque
-              dignissimos sed sapiente magni? Eaque, suscipit.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.Voluptates adipisci blanditiis error eligendi
+              veritatis ullam quisesse commodi fugit consequuntur. Repellat, at asperiores eaque dignissimos sed
+              sapiente magni? Eaque, suscipit.
             </p>
           </div>
           <div className="flex-[3]">
             <h2 className={titleClasses}>Descripcion del curso</h2>
             <p className="pl-4 mt-4 font-semibold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-              labore ipsam voluptates ratione, architecto officia sit quisquam
-              tempore reiciendis aut incidunt explicabo! Minus commodi nemo
-              architecto ab cupiditate molestiae odio doloremque nisi quis
-              corrupti debitis vitae qui officiis suscipit ullam eligendi dicta
-              nihil harum corporis, et officia molestias vero saepe esse.
-              Deserunt iusto ad quia omnis itaque dolore, numquam magni
-              blanditiis dicta mollitia, sequi a asperiores doloremque
-              exercitationem inventore, recusandae officiis fuga possimus
-              nesciunt!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod labore ipsam voluptates ratione, architecto
+              officia sit quisquam tempore reiciendis aut incidunt explicabo! Minus commodi nemo architecto ab
+              cupiditate molestiae odio doloremque nisi quis corrupti debitis vitae qui officiis suscipit ullam eligendi
+              dicta nihil harum corporis, et officia molestias vero saepe esse. Deserunt iusto ad quia omnis itaque
+              dolore, numquam magni blanditiis dicta mollitia, sequi a asperiores doloremque exercitationem inventore,
+              recusandae officiis fuga possimus nesciunt!
             </p>
             <h3 className={`${titleClasses} mt-28 mb-4`}>Qué aprenderas</h3>
             <div>

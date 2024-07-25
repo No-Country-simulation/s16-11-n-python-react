@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -13,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { FaPaperPlane } from "react-icons/fa";
 import { TchatMessage } from "./ChatBot";
+
 
 const FormSchema = z.object({
   messageSend: z
@@ -54,10 +54,7 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="w-[90%] h-[55px] flex justify-between mx-auto"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-[90%] h-[55px] flex justify-between mx-auto">
         <FormField
           control={form.control}
           name="messageSend"

@@ -6,11 +6,7 @@ export default function Router() {
     <Switch>
       {routes.map((route, index) =>
         !route.errorPage ? (
-          <Route
-            key={`route-${index}`}
-            path={route.path}
-            component={route.component}
-          />
+          <Route key={`route-${index}`} path={route.path} component={route.component} />
         ) : (
           <Route key="route-error" component={route.component}></Route>
         )

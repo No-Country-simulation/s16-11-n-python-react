@@ -5,12 +5,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Switch } from "@/components/ui/switch";
-import { FaRegFolder, FaRegMoon, FaRegSun, FaUser } from "react-icons/fa";
-import { RxExit } from "react-icons/rx";
-import { useTheme } from "./ThemeProvider";
-import { useStore } from "@/contexts/store";
+} from '@/components/ui/dropdown-menu';
+import { Switch } from '@/components/ui/switch';
+import { FaRegFolder, FaRegMoon, FaRegSun, FaUser } from 'react-icons/fa';
+import { RxExit } from 'react-icons/rx';
+import { useTheme } from './ThemeProvider';
+import { useStore } from '@/contexts/store';
 
 export const DropdownMenuUser: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -18,7 +18,7 @@ export const DropdownMenuUser: React.FC = () => {
   const name = useStore((state) => state.name);
   const email = useStore((state) => state.email);
   const handleChangeTheme = () => {
-    setTheme(theme == "dark" ? "light" : "dark");
+    setTheme(theme == 'dark' ? 'light' : 'dark');
   };
   return (
     <DropdownMenu>
@@ -39,14 +39,8 @@ export const DropdownMenuUser: React.FC = () => {
         </DropdownMenuLabel>
         <DropdownMenuLabel className="flex items-center justify-between my-2">
           <div className="flex items-center">
-            {theme === "dark" ? (
-              <FaRegMoon className="p-1 w-7 h-7" />
-            ) : (
-              <FaRegSun className="p-1 w-7 h-7" />
-            )}
-            <p className="pl-2 font-bold">
-              Tema {theme === "dark" ? "Oscuro" : "Claro"}
-            </p>
+            {theme === 'dark' ? <FaRegMoon className="p-1 w-7 h-7" /> : <FaRegSun className="p-1 w-7 h-7" />}
+            <p className="pl-2 font-bold">Tema {theme === 'dark' ? 'Oscuro' : 'Claro'}</p>
           </div>
           <Switch onClick={handleChangeTheme} />
         </DropdownMenuLabel>

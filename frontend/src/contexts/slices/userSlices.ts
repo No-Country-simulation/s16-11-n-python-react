@@ -1,4 +1,4 @@
-import { StateCreator } from "zustand";
+import { StateCreator } from 'zustand';
 
 export interface UserState {
   name: string | null;
@@ -9,9 +9,7 @@ export interface UserState {
   setEmail: (email: string) => void;
 }
 
-export const createUserSlice: StateCreator<UserState, [], [], UserState> = (
-  set
-) => ({
+export const createUserSlice: StateCreator<UserState, [], [], UserState> = (set) => ({
   name: null,
   user: null,
   email: null,
