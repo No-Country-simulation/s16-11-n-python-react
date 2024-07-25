@@ -56,7 +56,7 @@ class BaseCrud(ABC):
                 statement = statement.where(
                     model_attribute == attribute_dict[attribute_key]
                 )
-            results = await self.session.executes(statement)
+            results = await self.session.execute(statement)
 
             return results.scalars().all()
         else:
@@ -95,7 +95,7 @@ class BaseCrud(ABC):
         statement = select(self.model).where(self.model.id == model_id)
 
         result = await self.session.execute(statement)
-        instance = result.scalar().first()
+        instance = result.scalars().first()
 
         if instance:
             for key, value in data.model_dump().items():
@@ -110,7 +110,7 @@ class BaseCrud(ABC):
         statement = select(self.model).where(self.model.id == model_id)
         result = await self.session.execute(statement)
 
-        instance = result.scalar().first()
+        instance = result.scalars().first()
 
         if instance:
             # Comprobar como hacer la eliminación pasiva

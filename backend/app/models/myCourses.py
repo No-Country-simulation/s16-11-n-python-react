@@ -22,8 +22,8 @@ class MyCourses(Base):
         back_populates="my_courses",
         lazy="selectin",
     )
-    # courses: Mapped[Opcional[List[Course]]] = relationship(
-    #     back_populates="my_courses", lazy="selectin"
-    # )
+    course: Mapped[Optional[List[Course]]] = relationship(
+        back_populates="my_courses", lazy="selectin"
+    )
 
     __table_args__ = (UniqueConstraint("user_id"),)
