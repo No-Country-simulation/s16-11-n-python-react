@@ -5,7 +5,7 @@ api_router = APIRouter()
 
 api_router.include_router(
     auth.router,
-    prefix="/api/auth",
+    prefix="/api",
     tags=["Authentication"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
@@ -39,7 +39,7 @@ api_router.include_router(
 )
 api_router.include_router(
     course.router,
-    prefix="/courses",
+    prefix="/api/courses",
     tags=["Courses"],
     responses={
         status.HTTP_404_NOT_FOUND: {"description": "Not found"},
