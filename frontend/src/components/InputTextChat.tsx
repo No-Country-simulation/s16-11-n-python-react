@@ -1,42 +1,31 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { FaPaperPlane } from "react-icons/fa";
-import { TchatMessage } from "./ChatBot";
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { FaPaperPlane } from 'react-icons/fa';
+import { TchatMessage } from './ChatBot';
 
 const FormSchema = z.object({
   messageSend: z
     .string()
     .min(1, {
-      message: "Escriba al menos un caracter.",
+      message: 'Escriba al menos un caracter.',
     })
     .max(250, {
-      message: "No puede contener mas de 250 caracteres",
+      message: 'No puede contener mas de 250 caracteres',
     }),
 });
 interface InputTextChatProps {
-  updateChatMessages: (
-    updateFn: (prevMessages: TchatMessage[]) => TchatMessage[]
-  ) => void;
+  updateChatMessages: (updateFn: (prevMessages: TchatMessage[]) => TchatMessage[]) => void;
 }
 
-export const InputTextChat: React.FC<InputTextChatProps> = ({
-  updateChatMessages,
-}) => {
+export const InputTextChat: React.FC<InputTextChatProps> = ({ updateChatMessages }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      messageSend: "",
+      messageSend: '',
     },
   });
   const { setValue } = form;
@@ -45,11 +34,11 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({
     updateChatMessages((prevMessages) => [
       ...prevMessages,
       {
-        type: "sent",
+        type: 'sent',
         text: data.messageSend,
       },
     ]);
-    setValue("messageSend", "", { shouldValidate: false, shouldDirty: false });
+    setValue('messageSend', '', { shouldValidate: false, shouldDirty: false });
   }
 
   return (

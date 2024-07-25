@@ -1,18 +1,12 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { useEffect } from "react";
-import { CoursesMenu } from "@/components/CoursesMenu";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useEffect } from 'react';
+import { CoursesMenu } from '@/components/CoursesMenu';
 
 export const FinishCourses = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }, []);
 
@@ -33,9 +27,7 @@ export const FinishCourses = () => {
                   <CardDescription>Provisorio</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-red-600 w-[90%] h-12 mx-auto rounded-md">
-                    Course Imagen
-                  </div>
+                  <div className="bg-red-600 w-[90%] h-12 mx-auto rounded-md">Course Imagen</div>
                 </CardContent>
               </Card>
             ))}

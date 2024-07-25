@@ -29,9 +29,7 @@ export const DropdownMenuUser: React.FC = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
-          <div className="w-12 h-12 rounded-full bg-[#006E2F] mr-4 py-2 flex justify-center items-center">
-            Avatar
-          </div>
+          <div className="w-12 h-12 rounded-full bg-[#006E2F] mr-4 py-2 flex justify-center items-center">Avatar</div>
           <div className="flex flex-col">
             <div className="text-[15px]">{name}</div>
             <div className="text-[12px]">{email}</div>

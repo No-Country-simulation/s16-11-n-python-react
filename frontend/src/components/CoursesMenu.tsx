@@ -3,8 +3,8 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { Link } from "wouter";
+} from '@/components/ui/navigation-menu';
+import { Link } from 'wouter';
 
 export const CoursesMenu = () => {
   return (
@@ -12,26 +12,17 @@ export const CoursesMenu = () => {
       <NavigationMenu className="mx-auto shadow-sm dark:shadow-black shadow-zinc-300 dark:bg-[#09090B] bg-white my-[60px]">
         <NavigationMenuList className="mx-auto">
           <NavigationMenuItem>
-            <Link
-              to="/courses/finish-courses"
-              className={navigationMenuTriggerStyle()}
-            >
+            <Link to="/courses/finish-courses" className={navigationMenuTriggerStyle()}>
               Cursos finalizados
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link
-              to="/courses/courses-in-progress"
-              className={navigationMenuTriggerStyle()}
-            >
+            <Link to="/courses/courses-in-progress" className={navigationMenuTriggerStyle()}>
               Cursos en progreso
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link
-              to="/courses/new-courses"
-              className={navigationMenuTriggerStyle()}
-            >
+            <Link to="/courses/new-courses" className={navigationMenuTriggerStyle()}>
               Nuevos Cursos
             </Link>
           </NavigationMenuItem>

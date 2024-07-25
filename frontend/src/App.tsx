@@ -1,9 +1,9 @@
-import { ThemeProvider } from "./components/ThemeProvider";
-import Router from "./routes/Router";
-import { Toaster } from "./components/ui/toaster";
-import { UserIcon } from "./components/UserIcon";
-import { ChatBot } from "./components/ChatBot";
-import { Link } from "wouter";
+import { ThemeProvider } from './components/ThemeProvider';
+import Router from './routes/Router';
+import { Toaster } from './components/ui/toaster';
+import { UserIcon } from './components/UserIcon';
+import { ChatBot } from './components/ChatBot';
+import { Link } from 'wouter';
 
 function App() {
   return (
@@ -14,10 +14,7 @@ function App() {
             Tech<strong className="text-[#006E2F]">IA</strong>cademic
           </h1>
         </Link>
-        <Link
-          className="block my-2 py-2 hover:text-zinc-300 text-white text-lg"
-          to="/courses/courses-in-progress"
-        >
+        <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/courses/courses-in-progress">
           Cursos
         </Link>
         <UserIcon />
