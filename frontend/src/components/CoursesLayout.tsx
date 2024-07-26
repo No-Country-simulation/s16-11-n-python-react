@@ -10,7 +10,7 @@ export default function CoursesLayout() {
   const navStyle = navigationMenuTriggerStyle();
 
   return (
-    <div className="fixed flex items-center dark:shadow-xl w-full mt-3">
+    <div className="fixed flex items-center dark:shadow-xl w-full mt-3 z-20">
       <NavigationMenu className="mx-auto shadow-sm dark:shadow-black shadow-zinc-300 dark:bg-[#09090B] bg-white rounded-lg p-2">
         <NavigationMenuList>
           <NavigationMenuItem>
