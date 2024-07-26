@@ -5,6 +5,7 @@ import { UserIcon } from './components/UserIcon';
 import { ChatBot } from './components/ChatBot';
 import { Link } from 'wouter';
 
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -23,6 +24,7 @@ function App() {
       <ChatBot />
       <Toaster />
     </ThemeProvider>
+ 
   );
 }
 
