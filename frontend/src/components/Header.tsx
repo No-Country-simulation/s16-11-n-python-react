@@ -22,14 +22,7 @@ export const Header = () => {
             />
           </g>
           <defs>
-            <filter
-              id="filter0_d_774_598"
-              x="0"
-              y="0"
-              width="1053.14"
-              height="142"
-              filterUnits="userSpaceOnUse"
-            >
+            <filter id="filter0_d_774_598" x="0" y="0" width="1053.14" height="142" filterUnits="userSpaceOnUse">
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -58,7 +51,6 @@ export const Header = () => {
         <div className="flex justify-between items-center w-[50%]">
           <Search />
           <UserIcon />
-          
         </div>
       </div>
     </header>
