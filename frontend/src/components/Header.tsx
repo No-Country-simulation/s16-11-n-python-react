@@ -41,10 +41,10 @@ export const Header = () => {
       </Link>
       <div className="flex justify-between items-center w-[60%]">
         <div className="flex justify-around items-center w-[35%]">
-          <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/courses/courses-in-progress">
+          <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/cursos/cursos-en-progreso">
             Cursos
           </Link>
-          <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/about">
+          <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/sobre-nosotros">
             Acerca
           </Link>
         </div>

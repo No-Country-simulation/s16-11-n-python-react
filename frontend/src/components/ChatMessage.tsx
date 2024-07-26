@@ -1,7 +1,7 @@
 interface ChatMessageProp {
   type: 'received' | 'sent';
   text: string;
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 }
 
 export const ChatMessage: React.FC<ChatMessageProp> = ({ type, text, scrollRef }) => {
