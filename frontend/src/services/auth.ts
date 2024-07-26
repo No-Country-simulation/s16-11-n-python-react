@@ -8,11 +8,11 @@ export const loginUser = async (email: string, password: string) => {
     formData.append('username', email);
     formData.append('password', password);
 
-    const token = await axios.post<LoginResponse>(`${API_URL}/login/`, formData, {
+    const { data } = await axios.post<LoginResponse>(`${API_URL}/login/`, formData, {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     });
 
-    return token;
+    return data;
   } catch (error) {
     console.error(error);
     throw new Error('Error at login');
