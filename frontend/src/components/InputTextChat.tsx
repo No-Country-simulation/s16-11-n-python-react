@@ -29,11 +29,16 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({ updateChatMessages
     },
   });
   const { setValue } = form;
-
+  
+  const generateRandomKey = ()=> {
+    return Math.floor(Math.random() * 1000000); // Genera un número aleatorio entre 0 y 999999
+  };
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    const idRandom = generateRandomKey();
     updateChatMessages((prevMessages) => [
       ...prevMessages,
       {
+        id: idRandom,
         type: 'sent',
         text: data.messageSend,
       },
