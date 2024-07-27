@@ -1,0 +1,30 @@
+import { Link } from 'wouter';
+import { UserIcon } from './UserIcon';
+import { Search } from './Search';
+import { Logo } from './Logo';
+
+export const Header = () => {
+  return (
+    <header className="sticky top-0 z-50 bg-[#00050D]  dark:bg-[#00050D]/95">
+      <div className="max-w-desktop mx-auto h-16 flex justify-between px-10 items-center">
+        <Link href="/">
+          <Logo />
+        </Link>
+        <div className="flex justify-between items-center w-[60%]">
+          <div className="flex justify-around items-center w-[35%]">
+            <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/cursos/cursos-en-progreso">
+              Cursos
+            </Link>
+            <Link className="block my-2 py-2 hover:text-zinc-300 text-white text-lg" to="/sobre-nosotros">
+              Acerca
+            </Link>
+          </div>
+          <div className="flex justify-between items-center w-[50%]">
+            <Search />
+            <UserIcon />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};

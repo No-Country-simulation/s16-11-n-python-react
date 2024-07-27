@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 import { createLoggedInSlice, LoggedInState } from './slices/loggedInSlice';
 import { createUserSlice, UserState } from './slices/userSlices';

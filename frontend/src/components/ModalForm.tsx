@@ -4,7 +4,6 @@ import { FormLogIn } from './FormLogIn';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { FaUser } from 'react-icons/fa';
 
 export function ButtonLoading() {
   return (
@@ -25,8 +24,23 @@ export const ModalForm: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div>
-          <FaUser className="p-1 w-7 h-7 cursor-pointer hover:text-[#535456]" />
+        <div className="flex justify-between">
+          <button
+            onClick={() => {
+              setToggleForm(true);
+            }}
+            className="p-1 h-7 cursor-pointer hover:text-[#535456] mr-2"
+          >
+            Inicia sesion
+          </button>
+          <button
+            onClick={() => {
+              setToggleForm(false);
+            }}
+            className="rounded-md bg-[#1A98FF] p-1.5 cursor-pointer"
+          >
+            Comienza gratis!
+          </button>
         </div>
       </SheetTrigger>
       <SheetContent side="left" className="bg-[#101214] ">
@@ -37,7 +51,11 @@ export const ModalForm: React.FC = () => {
         </SheetHeader>
         <div className="grid gap-4 py-1">
           <div className=" h-full w-full flex justify-center flex-col items-center">
-            {toggleForm ? <FormLogIn handleRegister={handleRegister} /> : <FormSignIn handleRegister={handleRegister} />}
+            {toggleForm ? (
+              <FormLogIn handleRegister={handleRegister} />
+            ) : (
+              <FormSignIn handleRegister={handleRegister} />
+            )}
           </div>
         </div>
       </SheetContent>
