@@ -4,7 +4,7 @@ import {Logo} from './Logo';
 export const Footer = () => {
   return (
     <footer className="dark:bg-[#00050D]">
-      <div className="flex flex-col max-w-[1440px] ">
+      <div className="flex flex-col max-w-desktop mx-auto">
         <div className="md:flex md:justify-between h-[440px] pt-10 w-[95%] md:w-[90%] mx-auto">
           <div className="w-1/5">
             <Logo />
@@ -43,10 +43,10 @@ export const Footer = () => {
             <button className="bg-[#1ADB31] w-full h-12 mt-5 rounded-lg">Suscribirse</button>
           </div>
         </div>
+      </div>
         <div className="h-10 w-full bg-[#1A98FF] text-black text-sm font-semibold items-center flex justify-center">
           TechIAcademic © 2024. Todos los derechos reservados.
         </div>
-      </div>
     </footer>
   );
 };
