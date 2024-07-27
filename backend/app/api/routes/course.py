@@ -15,7 +15,7 @@ router = APIRouter()
     response_model=CourseSchema,
 )
 async def create_course(
-    channel_id: int,
+    channel_id: str,
     create_course: CourseCreate,
     db: AsyncSession = Depends(get_session),
     current_user: str = Depends(validate_authenticate_user),
@@ -46,7 +46,7 @@ async def get_all_course(
     response_model=CourseSchema,
 )
 async def get_course_id(
-    course_id: int,
+    course_id: str,
     db: AsyncSession = Depends(get_session),
     current_user: str = Depends(validate_authenticate_user),
 ):
@@ -60,7 +60,7 @@ async def get_course_id(
     status_code=status.HTTP_200_OK,
 )
 async def delete_course(
-    course_id: int,
+    course_id: str,
     db: AsyncSession = Depends(get_session),
     current_user: str = Depends(validate_authenticate_user),
 ):
