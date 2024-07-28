@@ -29,7 +29,7 @@ export const ModalForm: React.FC = () => {
             onClick={() => {
               setToggleForm(true);
             }}
-            className="p-1 h-7 cursor-pointer hover:text-[#535456] mr-2"
+            className="p-1 h-7 cursor-pointer hover:text-zinc-300 mr-2"
           >
             Inicia sesion
           </button>
@@ -37,7 +37,7 @@ export const ModalForm: React.FC = () => {
             onClick={() => {
               setToggleForm(false);
             }}
-            className="rounded-md bg-[#1A98FF] p-1.5 cursor-pointer"
+            className="rounded-md bg-[#1A98FF] hover:bg-[#1371be] p-1.5 cursor-pointer"
           >
             Comienza gratis!
           </button>

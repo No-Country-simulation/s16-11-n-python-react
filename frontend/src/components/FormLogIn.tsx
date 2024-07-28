@@ -8,6 +8,7 @@ import { toast } from '@/components/ui/use-toast';
 import { ButtonLoading } from './ModalForm';
 import { useState } from 'react';
 import { useStore } from '@/contexts/store';
+import { loginUser } from '@/services/auth';
 
 interface FormLogInProps {
   handleRegister: () => void;
@@ -33,17 +34,34 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit (data: z.infer<typeof formSchema>) {
+    try {
+      const dataUser = await loginUser(data.email, data.password)
+      // guardar en el store: dataUser.access_token  
+      // setLogin();
+      //ir a cursos
+      //cerrar el
     handleLoading();
-    setLogin();
+    
     toast({
       title: 'Su formulario fue enviado:',
       description: (
         <pre className="mt-2 w-[340px] rounded-md p-4 z-20">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          <code className="text-white"></code>
         </pre>
       ),
     });
+    } catch (error) {
+      toast({
+        title: 'Error en su formulario',
+        description: (
+          <div className="mt-2 max-w-[340px] rounded-md p-4 z-20">
+            <h1 className="text-white inline">Por favor vuelve a intentarlo</h1>
+          </div>
+        ),
+        variant: "destructive"
+      });
+    }
   }
 
   return (

@@ -9,22 +9,23 @@ import { toast } from '@/components/ui/use-toast';
 import { useState } from 'react';
 import { ButtonLoading } from './ModalForm';
 import { useStore } from '@/contexts/store';
+import { registerUser } from '@/services/auth';
 
 interface FormSignInProps {
   handleRegister: () => void;
 }
 const formSchema = z.object({
-  username: z.string().min(3, 'Campo Obligatorio.'),
-  name: z.string().min(3, 'Campo Obligatorio.'),
+  firstName: z.string().min(3, 'Campo Obligatorio.'),
+  lastName: z.string().min(3, 'Campo Obligatorio.'),
   email: z.string().email('Email invalido.'),
   password: z.string().min(6, 'La contraseña minima de 6 caracteres.'),
 });
 export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   const [isLoading, setIsLoading] = useState(true);
   const setLogin = useStore((state) => state.setLogin);
-  const setName = useStore((state) => state.setName);
+  const setFirstName = useStore((state) => state.setFirstName);
   const setEmail = useStore((state) => state.setEmail);
-  const setUser = useStore((state) => state.setUser);
+  const setLastName = useStore((state) => state.setLastName);
 
   const handleLoading = () => {
     setIsLoading(!isLoading);
@@ -32,19 +33,31 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      username: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    const {firstName , lastName, email, password} = data;
+    try {
+      const dataUser =  await registerUser({first_name: firstName , last_name: lastName, email, password});
+      //dataUser.id?
+      //loginUser(email, password)   
+      //guardar el token en el store   
+      //setLogin();
+      //tosty
+      alert("Te haz regisrado satifastoriamente")
+    } catch (error) {
+      alert("error")
+    }
     handleLoading();
-    //Si el registro es exitoso se guarda los datos de user y se ejecuta el toast:
-    setName(data.name);
+    
+    setFirstName(data.firstName);
     setEmail(data.email);
-    setUser(data.username);
+    setLastName(data.lastName);
     setLogin();
     toast({
       title: 'You submitted the following values:',
@@ -58,10 +71,10 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-4 text-white">
         <FormField
           control={form.control}
-          name="name"
+          name="firstName"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-zinc-500">Nombre:</FormLabel>
@@ -74,7 +87,7 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
         />
         <FormField
           control={form.control}
-          name="username"
+          name="lastName"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="text-zinc-500">Usuario:</FormLabel>

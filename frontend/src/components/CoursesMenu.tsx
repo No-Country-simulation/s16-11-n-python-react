@@ -8,7 +8,7 @@ import { Link } from 'wouter';
 
 export const CoursesMenu = () => {
   return (
-    <div className="fixed flex items-center top-16 dark:shadow-xl dark:shadow-[#09090B] dark:bg-[#09090B]/95 bg-white shadow-none z-20 w-[99%] h-[60px]">
+    <div className="fixed flex items-center top-16 dark:shadow-xl dark:shadow-[#09090B] dark:bg-[#09090B]/95 bg-white shadow-none z-[60] w-[99%] h-[60px]">
       <NavigationMenu className="mx-auto shadow-sm dark:shadow-black shadow-zinc-300 dark:bg-[#09090B] bg-white my-[60px]">
         <NavigationMenuList className="mx-auto">
           <NavigationMenuItem>
