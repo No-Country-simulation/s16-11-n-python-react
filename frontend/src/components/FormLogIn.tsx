@@ -8,6 +8,8 @@ import { toast } from '@/components/ui/use-toast';
 import { ButtonLoading } from './ModalForm';
 import { useState } from 'react';
 import { useStore } from '@/contexts/store';
+import { loginUser } from '@/services/auth';
+import { useLocation } from 'wouter';
 
 interface FormLogInProps {
   handleRegister: () => void;
@@ -21,6 +23,9 @@ const formSchema = z.object({
 export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
   const [isLoading, setIsLoading] = useState(true);
   const setLogin = useStore((state) => state.setLogin);
+  const setAccessToken = useStore((state) => state.setAccessToken);
+  const firstName = useStore((state) => state.firstName);
+  const [location, setLocation] = useLocation();
 
   const handleLoading = () => {
     setIsLoading(!isLoading);
@@ -33,22 +38,38 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     handleLoading();
-    setLogin();
-    toast({
-      title: 'Su formulario fue enviado:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md p-4 z-20">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    try {
+      const dataUser = await loginUser(data.email, data.password);
+      setAccessToken(dataUser.access_token);
+      setLogin();
+      location && setLocation('/cursos/nuevos-cursos');
+
+      toast({
+        title: 'Iniciaste sesion exitosamente!!!',
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-green-800 p-4 z-20">
+            <p className="text-white">Bienvenido {firstName}</p>
+          </pre>
+        ),
+      });
+    } catch (error) {
+      toast({
+        title: 'Error en su formulario',
+        description: (
+          <div className="mt-2 max-w-[340px] rounded-md p-4 z-20">
+            <h1 className="text-white inline">Por favor vuelve a intentarlo</h1>
+          </div>
+        ),
+        variant: 'destructive',
+      });
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="px-5 w-full space-y-6 text-white">
         <FormField
           control={form.control}
           name="email"
