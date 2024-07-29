@@ -15,7 +15,7 @@ import { useStore } from '@/contexts/store';
 export const DropdownMenuUser: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const setLogout = useStore((state) => state.setLogout);
-  const name = useStore((state) => state.name);
+  const name = useStore((state) => state.firstName);
   const email = useStore((state) => state.email);
   const handleChangeTheme = () => {
     setTheme(theme == 'dark' ? 'light' : 'dark');

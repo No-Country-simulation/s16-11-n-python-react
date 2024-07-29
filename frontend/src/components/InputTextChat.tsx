@@ -34,6 +34,7 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({ updateChatMessages
     updateChatMessages((prevMessages) => [
       ...prevMessages,
       {
+        id: crypto.randomUUID(),
         type: 'sent',
         text: data.messageSend,
       },
