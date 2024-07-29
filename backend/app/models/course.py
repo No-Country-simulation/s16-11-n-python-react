@@ -26,7 +26,7 @@ class Course(Base):
 
     channel_id: Mapped[Optional[str]] = mapped_column(ForeignKey("channel.id"))
 
-    # my_courses_id: Mapped[Optional[int]] = mapped_column(ForeignKey("my_courses.id"))
+    my_courses_id: Mapped[Optional[int]] = mapped_column(ForeignKey("my_courses.id"))
 
     channel: Mapped[Channel] = relationship(
         back_populates="course",
