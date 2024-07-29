@@ -9,7 +9,8 @@ import { toast } from '@/components/ui/use-toast';
 import { useState } from 'react';
 import { ButtonLoading } from './ModalForm';
 import { useStore } from '@/contexts/store';
-import { registerUser } from '@/services/auth';
+import { loginUser, registerUser } from '@/services/auth';
+import { useLocation } from 'wouter';
 
 interface FormSignInProps {
   handleRegister: () => void;
@@ -26,6 +27,8 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   const setFirstName = useStore((state) => state.setFirstName);
   const setEmail = useStore((state) => state.setEmail);
   const setLastName = useStore((state) => state.setLastName);
+  const setAccessToken = useStore((state) => state.setAccessToken);
+  const [location, setLocation] = useLocation();
 
   const handleLoading = () => {
     setIsLoading(!isLoading);
@@ -41,32 +44,36 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    const {firstName , lastName, email, password} = data;
-    try {
-      const dataUser =  await registerUser({first_name: firstName , last_name: lastName, email, password});
-      //dataUser.id?
-      //loginUser(email, password)   
-      //guardar el token en el store   
-      //setLogin();
-      //tosty
-      alert("Te haz regisrado satifastoriamente")
-    } catch (error) {
-      alert("error")
-    }
+    const { firstName, lastName, email, password } = data;
     handleLoading();
-    
-    setFirstName(data.firstName);
-    setEmail(data.email);
-    setLastName(data.lastName);
-    setLogin();
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 z-20">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    try {
+      const dataUser = await registerUser({ first_name: firstName, last_name: lastName, email, password });
+      const dataAccess = await loginUser(email, password);
+      setFirstName(dataUser.first_name);
+      setEmail(dataUser.email);
+      setLastName(dataUser.last_name);
+      toast({
+        title: 'Registro exitoso!!!',
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-green-800 p-4 z-20">
+            <code className="text-white">Bienvenido {dataUser.first_name}</code>
+          </pre>
+        ),
+      });
+      setAccessToken(dataAccess.access_token);
+      setLogin();
+      location && setLocation('/cursos/nuevos-cursos');
+    } catch (error) {
+      toast({
+        title: 'Error en su formulario',
+        description: (
+          <div className="mt-2 max-w-[340px] rounded-md p-4 z-20">
+            <h1 className="text-white inline">Por favor vuelve a intentarlo</h1>
+          </div>
+        ),
+        variant: 'destructive',
+      });
+    }
   }
 
   return (

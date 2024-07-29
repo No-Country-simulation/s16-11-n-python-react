@@ -1,19 +1,19 @@
 import { StateCreator } from 'zustand';
 
 export interface UserState {
-  name: string | null;
-  user: string | null;
+  firstName: string | null;
+  lastName: string | null;
   email: string | null;
-  setName: (name: string) => void;
-  setUser: (user: string) => void;
+  setFirstName: (name: string) => void;
+  setLastName: (user: string) => void;
   setEmail: (email: string) => void;
 }
 
 export const createUserSlice: StateCreator<UserState, [], [], UserState> = (set) => ({
-  name: null,
-  user: null,
+  firstName: null,
+  lastName: null,
   email: null,
-  setName: (name) => set({ name }),
-  setUser: (user) => set({ user }),
+  setFirstName: (firstName) => set({ firstName }),
+  setLastName: (lastName) => set({ lastName }),
   setEmail: (email) => set({ email }),
 });

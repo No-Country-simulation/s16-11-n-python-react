@@ -4,6 +4,7 @@ import { FormLogIn } from './FormLogIn';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Logo } from './Logo';
 
 export function ButtonLoading() {
   return (
@@ -45,8 +46,8 @@ export const ModalForm: React.FC = () => {
       </SheetTrigger>
       <SheetContent side="left" className="bg-[#101214] ">
         <SheetHeader>
-          <SheetTitle className="scroll-m-20 text-xl font-bold text-center tracking-tight lg:text-3xl py-5">
-            TechIAdemic
+          <SheetTitle className="scroll-m-20 flex justify-center tracking-tight lg:text-3xl py-5">
+            <Logo />
           </SheetTitle>
         </SheetHeader>
         <div className="grid gap-4 py-1">
