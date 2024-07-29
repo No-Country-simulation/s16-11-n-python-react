@@ -15,7 +15,7 @@ router = APIRouter()
     response_model=VideoSchema,
 )
 async def create_video(
-    course_id: int,
+    course_id: str,
     create_video: VideoCreate,
     db: AsyncSession = Depends(get_session),
     current_user: str = Depends(validate_authenticate_user),
@@ -33,7 +33,7 @@ async def create_video(
     response_model=VideoSchema,
 )
 async def get_video_id(
-    video_id: int,
+    video_id: str,
     db: AsyncSession = Depends(get_session),
     current_user: str = Depends(validate_authenticate_user),
 ):

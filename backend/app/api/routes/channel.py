@@ -29,7 +29,7 @@ async def create_channel(
     response_model=ChannelSchema,
 )
 async def get_channel_id(
-    channel_id: int,
+    channel_id: str,
     db: AsyncSession = Depends(get_session),
 ):
     channel = await ChannelCrud(db).get(channel_id)

@@ -3,11 +3,12 @@ from datetime import date
 
 
 class CourseBase(BaseModel):
-    channel_id: int | None = None
-    tittle: str
+    id: str
+    channel_id: str | None = None
+    title: str
     thumbnail: str
     description: str | None = None
-    published_ad: date
+    published_at: date
 
 
 class CourseCreate(CourseBase):
@@ -15,7 +16,7 @@ class CourseCreate(CourseBase):
 
 
 class CourseSchema(CourseBase):
-    id: int
+    id: str
 
     # Ver si funciona de esta manera
     # video: List[VideoSchema] | None = []

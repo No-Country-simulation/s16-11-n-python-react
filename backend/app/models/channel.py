@@ -1,4 +1,6 @@
 from typing import List, TYPE_CHECKING, Optional
+
+from sqlalchemy import String, Integer
 from core.database import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -11,14 +13,15 @@ else:
 class Channel(Base):
     __tablename__ = "channel"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    channel_name: Mapped[str]
-    description: Mapped[Optional[str]]
+    id: Mapped[str] = mapped_column(
+        String, primary_key=True, unique=True, nullable=False
+    )
+    channel_name: Mapped[str] = mapped_column(String)
+    description: Mapped[Optional[str]] = mapped_column(String)
     custom_url: Mapped[str] = mapped_column(unique=True)
-    thumbnail: Mapped[str]
-    country: Mapped[str]
-    views: Mapped[Optional[int]]
-    subs: Mapped[Optional[int]]
+    country: Mapped[str] = mapped_column(String)
+    views: Mapped[Optional[int]] = mapped_column(Integer)
+    subs: Mapped[Optional[int]] = mapped_column(Integer)
 
     course: Mapped[List[Course]] = relationship(
         back_populates="channel", lazy="selectin"
