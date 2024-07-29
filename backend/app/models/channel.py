@@ -19,9 +19,10 @@ class Channel(Base):
     channel_name: Mapped[str] = mapped_column(String)
     description: Mapped[Optional[str]] = mapped_column(String)
     custom_url: Mapped[str] = mapped_column(unique=True)
-    country: Mapped[str] = mapped_column(String)
-    views: Mapped[Optional[int]] = mapped_column(Integer)
-    subs: Mapped[Optional[int]] = mapped_column(Integer)
+    thumbnail: Mapped[str] = mapped_column(String)
+    country: Mapped[Optional[str]] = mapped_column(String)
+    views: Mapped[int] = mapped_column(Integer)
+    subs: Mapped[int] = mapped_column(Integer)
 
     course: Mapped[List[Course]] = relationship(
         back_populates="channel", lazy="selectin"
