@@ -1,6 +1,7 @@
-import { SwiperSlider } from '@/components/SwiperSlider';
+import { SwiperBreakpoints, SwiperSlider } from '@/components/SwiperSlider';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 const swiperImagesExamples = [
   {
@@ -32,6 +33,21 @@ const swiperImagesExamples = [
   },
 ];
 
+const swiperBreakPoints: SwiperBreakpoints = {
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 71,
+  },
+  768: {
+    slidesPerView: 3,
+    spaceBetween: 71,
+  },
+  1024: {
+    slidesPerView: 4,
+    spaceBetween: 71,
+  },
+};
+
 export function Home() {
   return (
     <>
@@ -43,8 +59,43 @@ export function Home() {
       {/* <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">TechIAdemic Home</h1> */}
       <main>
         <div className="flex min-h-[1000px] flex-col container">
-          <section className="mx-auto w-full max-w-screen-xl max-h-[512px] h-[512px] px-8 text-black cursor-grab">
-            <SwiperSlider swiperImages={swiperImagesExamples} />
+          <section
+            id="swiperHome"
+            className="mx-auto w-full max-w-screen-xl max-h-[512px] h-[512px] px-8 text-black cursor-grab"
+          >
+            <SwiperSlider
+              swiperImages={swiperImagesExamples}
+              swiperModules={[Navigation, Autoplay, Pagination]}
+              autoPlay={true}
+              loop={true}
+              paginationClickable={true}
+              navigation={true}
+              centeredSlides={true}
+              autoPlayProgress={true}
+            />
+          </section>
+          <section id="swiperCards">
+            <div className="mx-auto w-full max-w-screen-xl max-h-[147px] h-[147px] px-8 mt-10 mb-10 text-white cursor-grab">
+              <SwiperSlider
+                spaceBetween={71}
+                slidesPerView={1}
+                breakPoints={swiperBreakPoints}
+                navigation={true}
+                swiperImages={[...Array(10)].map((_, i) => `Slide ${i + 1}`)}
+                swiperModules={[Navigation]}
+              />
+            </div>
+            <div className="mx-auto w-full max-w-screen-xl max-h-[147px] h-[147px] px-8 mt-10 mb-10 text-white cursor-grab">
+              <h3 className="mb-4 ml-16 font-bold text-2xl leading-9">Cursos Destacados</h3>
+              <SwiperSlider
+                spaceBetween={71}
+                slidesPerView={1}
+                breakPoints={swiperBreakPoints}
+                navigation={true}
+                swiperImages={[...Array(10)].map((_, i) => `Slide ${i + 1}`)}
+                swiperModules={[Navigation]}
+              />
+            </div>
           </section>
         </div>
       </main>

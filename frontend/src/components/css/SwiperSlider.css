@@ -6,20 +6,46 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: rgb(9 9 11 / var(1));
-
+  background: rgb(9 9 11 / var(--tw-bg-opacity));
+  opacity: var(--tw-bg-opacity);
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+#swiperCards .swiper-slide {
+  background-color: white;
+}
+
+.swiper-custom-properties {
+  background-color: white;
+}
+
+#swiperCards .swiper.swiper-initialized.swiper-horizontal {
+  padding-left: 63px;
+  padding-right: 63px;
+}
+
+.swiper-wrapper {
+  color: black;
+}
+
 .swiper-slide img {
   display: block;
-  width: 74%;
+  width: 100%;
   height: 100%;
   padding-bottom: 49px;
   object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+
+  .swiper-slide img {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
 }
 
 .autoplay-progress {

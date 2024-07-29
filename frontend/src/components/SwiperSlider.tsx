@@ -1,36 +1,48 @@
+import { useRef } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+
+import { SwiperModule, SwiperOptions } from 'swiper/types';
+
+import './css/SwiperSlider.css';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-import { useRef } from 'react';
-
-import './css/SwiperSlider.css';
+export interface SwiperBreakpoints {
+  [width: number]: SwiperOptions;
+  [ratio: string]: SwiperOptions;
+}
 
 interface SwiperSliderProps {
-  swiperImages: { urlImg: string }[];
-  autoPlayDelay?: number;
+  swiperImages?: { urlImg: string }[] | string[];
+  autoPlay?: boolean;
+  autoPlayDuration?: number;
   loop?: boolean;
   paginationClickable?: boolean;
   navigation?: boolean;
   spaceBetween?: number;
   centeredSlides?: boolean;
   autoPlayProgress?: boolean;
+  slidesPerView?: number;
+  breakPoints?: SwiperBreakpoints;
+  swiperModules: SwiperModule[];
 }
 
 export const SwiperSlider = (props: SwiperSliderProps) => {
   const {
-    autoPlayDelay,
-    loop,
-    paginationClickable,
-    navigation,
-    spaceBetween,
-    centeredSlides,
-    autoPlayProgress,
+    slidesPerView = 1,
+    autoPlay = false,
+    autoPlayDuration = 10000,
+    loop = false,
+    paginationClickable = false,
+    navigation = false,
+    spaceBetween = 30,
+    centeredSlides = false,
+    autoPlayProgress = false,
     swiperImages,
+    swiperModules,
+    breakPoints,
   } = props;
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const progressContent = useRef<HTMLSpanElement | null>(null);
@@ -46,26 +58,30 @@ export const SwiperSlider = (props: SwiperSliderProps) => {
   return (
     <>
       <Swiper
-        spaceBetween={spaceBetween ?? 30}
-        centeredSlides={centeredSlides ?? true}
-        loop={loop ?? true}
-        autoplay={{
-          delay: autoPlayDelay ?? 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: paginationClickable ?? true,
-        }}
-        navigation={navigation ?? true}
-        modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoPlayTimeLeft}
+        slidesPerView={slidesPerView}
+        spaceBetween={spaceBetween}
+        centeredSlides={centeredSlides}
+        loop={loop}
+        autoplay={autoPlay ? { delay: autoPlayDuration, disableOnInteraction: false } : !autoPlay}
+        pagination={paginationClickable ? { clickable: paginationClickable } : !paginationClickable}
+        navigation={navigation}
+        modules={swiperModules}
+        breakpoints={breakPoints ? breakPoints : undefined}
+        {...(autoPlayProgress ? { onAutoPlayTimeLeft } : {})}
       >
-        {swiperImages.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image.urlImg} loading="lazy" alt={`slide ${index + 1}`} />
-            <div className="swiper-lazy-preloader swiper-swiper-lazy-preloader-white"></div>
-          </SwiperSlide>
-        ))}
+        {swiperImages &&
+          swiperImages.map((image, index) => (
+            <SwiperSlide key={index}>
+              {typeof image === 'string' ? (
+                image
+              ) : (
+                <>
+                  <img src={image.urlImg} loading="lazy" alt={`slide ${index + 1}`} />
+                  <div className="swiper-lazy-preloader swiper-swiper-lazy-preloader-white"></div>
+                </>
+              )}
+            </SwiperSlide>
+          ))}
         {autoPlayProgress && (
           <div className="autoplay-progress" slot="container-end">
             <svg viewBox="0 0 48 48" ref={progressCircle}>
