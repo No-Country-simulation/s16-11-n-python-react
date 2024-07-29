@@ -7,13 +7,8 @@ import { Input } from '@/components/ui/input';
 import { FaSearch } from 'react-icons/fa';
 
 const FormSchema = z.object({
-  searchCourse: z
-    .string()
+  searchCourse: z.string(),
 });
-
-function onSubmit(data: z.infer<typeof FormSchema>) {
-  console.log(data);
-}
 
 export function Search() {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -22,16 +17,22 @@ export function Search() {
       searchCourse: '',
     },
   });
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log(data);
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className='flex justify-center items-center rounded-full h-12 w-12 cursor-pointer'>
-          <FaSearch className='text-white' />
+        <div className="flex justify-center items-center rounded-full h-12 w-12 cursor-pointer">
+          <FaSearch className="text-white" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-96 h-16 relative top-5 right-20">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full h-[95%] flex justify-between items-center mx-auto">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full h-[95%] flex justify-between items-center mx-auto"
+          >
             <FormField
               control={form.control}
               name="searchCourse"
