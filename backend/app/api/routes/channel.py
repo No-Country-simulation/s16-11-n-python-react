@@ -1,3 +1,4 @@
+from typing import List
 from api.dependencies.auth import validate_authenticate_user
 from api.dependencies.db import get_session
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -33,5 +34,18 @@ async def get_channel_id(
     db: AsyncSession = Depends(get_session),
 ):
     channel = await ChannelCrud(db).get(channel_id)
+
+    return channel
+
+
+@router.get(
+    "/",
+    status_code=status.HTTP_200_OK,
+    response_model=List[ChannelSchema],
+)
+async def get_channel_id(
+    db: AsyncSession = Depends(get_session),
+):
+    channel = await ChannelCrud(db).get_all()
 
     return channel

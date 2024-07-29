@@ -18,7 +18,7 @@ class Video(Base):
     description: Mapped[Optional[str]] = mapped_column(String)
     thumbnail: Mapped[str] = mapped_column(String)
     published_at: Mapped[Date] = mapped_column(Date)
-    is_active: Mapped[bool] = mapped_column(default=False)
+    # is_active: Mapped[bool] = mapped_column(default=False)
 
     course_id: Mapped[Optional[str]] = mapped_column(ForeignKey("course.id"))
     course: Mapped[Course] = relationship(

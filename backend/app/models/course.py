@@ -19,14 +19,14 @@ class Course(Base):
         String, primary_key=True, unique=True, nullable=False
     )
     title: Mapped[str] = mapped_column(String)
-    thumbnail: Mapped[str] = mapped_column(String)
+    # thumbnail: Mapped[str] = mapped_column(String)
     description: Mapped[Optional[str]] = mapped_column(String)
     published_at: Mapped[Date] = mapped_column(Date)
-    is_active: Mapped[bool] = mapped_column(default=True)
+    # is_active: Mapped[bool] = mapped_column(default=True)
 
     channel_id: Mapped[Optional[str]] = mapped_column(ForeignKey("channel.id"))
 
-    my_courses_id: Mapped[Optional[int]] = mapped_column(ForeignKey("my_courses.id"))
+    # my_courses_id: Mapped[Optional[int]] = mapped_column(ForeignKey("my_courses.id"))
 
     channel: Mapped[Channel] = relationship(
         back_populates="course",

@@ -6,7 +6,8 @@ class ChannelBase(BaseModel):
     channel_name: str
     description: str | None = None
     custom_url: str
-    country: str
+    thumbnail: str
+    country: str | None = None
     views: int | None = None
     subs: int | None = None
 
