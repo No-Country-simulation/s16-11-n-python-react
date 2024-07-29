@@ -5,10 +5,3 @@
 #root {
   @apply dark:bg-zinc-950 bg-zinc-50 dark:text-white min-h-screen;
 }
-
-.course-detail.cover {
-  @apply bg-center max-w-desktop aspect-video mx-auto w-full flex items-center;
-  background: linear-gradient(to bottom, #09090b 5%, #09090b5f 10%),
-    url(https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg);
-  @apply bg-cover text-white;
-}
