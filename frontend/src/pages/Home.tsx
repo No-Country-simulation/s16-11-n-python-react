@@ -2,8 +2,6 @@ import { SwiperSlider } from '@/components/SwiperSlider';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 
-import './home.css';
-
 const swiperImagesExamples = [
   {
     urlImg: 'https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg',
