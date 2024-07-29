@@ -32,7 +32,12 @@ export function CourseDetail({ params }: Props) {
 
   return (
     <main>
-      <section className="course-detail cover">
+      <section
+        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white bg-cover"
+        style={{
+          background: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${'https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg'})`,
+        }}
+      >
         <div className="max-w-1600 mx-auto pt-32 w-full">
           <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl text-balance w-3/5">
             Curso de {data[id]?.title}
@@ -42,8 +47,8 @@ export function CourseDetail({ params }: Props) {
         </div>
       </section>
       <section className="max-w-desktop mx-auto" style={backgroundGradient}>
-        <div className="flex items-start gap-36 max-w-8xl mx-auto pt-28 pb-10">
-          <div className="flex-1 px-6 top-28 sticky">
+        <div className="flex items-start gap-36 max-w-8xl mx-auto pt-28 pb-10 md:flex-row flex-col">
+          <div className="flex-1 px-6 md:sticky">
             <img
               src="https://yt3.ggpht.com/ytc/AIdro_lPBcTSzb5NqMhKQSo6aaTPcnPM2EZhvhdcQi0YvPmflQ=s800-c-k-c0x00ffffff-no-rj"
               alt="photo of midu"
@@ -84,7 +89,7 @@ export function CourseDetail({ params }: Props) {
             </p>
             <h3 className={`${titleClasses} mt-28 mb-4`}>Qué aprenderas</h3>
             <ScrollArea className="w-full aspect-[16/17] p-2 pr-4">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-16">
                 {courses.map((_, idx) => (
                   <div key={idx} className="flex flex-col items-start gap-2">
                     <Link className="aspect-video w-full bg-zinc-600" href={`/clase/${idx}`}>
