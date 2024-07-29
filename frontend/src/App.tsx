@@ -5,6 +5,7 @@ import { ChatBot } from './components/ChatBot';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -14,6 +15,7 @@ function App() {
       <ChatBot />
       <Toaster />
     </ThemeProvider>
+ 
   );
 }
 
