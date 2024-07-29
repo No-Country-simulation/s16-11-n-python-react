@@ -1,5 +1,6 @@
 import { API_URL } from '@/utils/config';
 import axios from 'axios';
+import { LoginResponse, RegisterResponse } from './responses';
 
 export const loginUser = async (email: string, password: string) => {
   try {

@@ -9,3 +9,11 @@ interface RegisterResponse {
   email: string;
   id: number;
 }
+
+export interface CourseResponse {
+  id:           string;
+  channel_id:   string;
+  title:        string;
+  description:  null | string;
+  published_at: string;
+}

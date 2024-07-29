@@ -9,6 +9,7 @@ import {
   FinishedCourses,
   NewCourses,
 } from '../pages';
+import AllCourses from '@/pages/AllCourses';
 
 export const routes = [
   {
@@ -26,6 +27,10 @@ export const routes = [
   {
     path: '/clase/:id',
     component: ClassPage,
+  },
+  {
+    path: '/todos-los-cursos',
+    component: AllCourses
   },
   {
     path: '/cursos',
