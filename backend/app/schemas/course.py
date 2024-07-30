@@ -6,7 +6,7 @@ class CourseBase(BaseModel):
     id: str
     channel_id: str | None = None
     title: str
-    # thumbnail: str
+    thumbnail: str | None = None
     description: str | None = None
     published_at: date
 
