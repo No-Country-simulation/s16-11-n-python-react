@@ -1,15 +1,22 @@
-import { Button } from '@/components/ui/button';
-import { Link } from 'wouter';
+import { CarouselCoursesRecommended } from '@/components/CarouselCoursesRecommended';
+import { CarouselHomeWithNumber } from '@/components/CarouselHomeWithNumber';
+import HomeSlice from '@/components/HomeSlice';
+import { useEffect } from 'react';
 
 export function Home() {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
   return (
-    <>
-      <Button asChild>
-        <Link href="/curso/a21" className="inline-block">
-          Curso
-        </Link>
-      </Button>
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">TechIAdemic Home</h1>
-    </>
+    <main className="max-w-desktop h-full mx-auto">
+      <HomeSlice/>
+      <div className="mx-auto w-4/5 h-full">
+        <CarouselHomeWithNumber />
+        <CarouselCoursesRecommended />
+      </div>
+    </main>
   );
 }
