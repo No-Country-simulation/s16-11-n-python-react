@@ -1,9 +1,11 @@
+from typing import List
 from pydantic import BaseModel
 from datetime import date
+from .video import VideoCourseSchema
+from .channel import ChannelBase
 
 
 class CourseBase(BaseModel):
-    id: str
     channel_id: str | None = None
     title: str
     thumbnail: str | None = None
@@ -18,8 +20,10 @@ class CourseCreate(CourseBase):
 class CourseSchema(CourseBase):
     id: str
 
-    # Ver si funciona de esta manera
-    # video: List[VideoSchema] | None = []
-
     class Config:
         from_attributes = True
+
+
+class CourseSchemaId(CourseSchema):
+    channel: ChannelBase
+    video: List[VideoCourseSchema]
