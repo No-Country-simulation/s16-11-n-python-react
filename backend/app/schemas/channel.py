@@ -2,7 +2,6 @@ from pydantic import BaseModel
 
 
 class ChannelBase(BaseModel):
-    id: str
     channel_name: str
     description: str | None = None
     custom_url: str
@@ -18,7 +17,6 @@ class ChannelCreate(ChannelBase):
 
 class ChannelSchema(ChannelBase):
     id: str
-    # List de cursos?
 
     class Config:
         from_attributes = True
