@@ -31,7 +31,7 @@ export function ClassPage({ params }: Props) {
   }, [toggleContentList, id]);
 
   return (
-    <main className="max-w-8xl mx-auto flex gap-6 font-semibold pt-14">
+    <main className="max-w-8xl mx-auto flex gap-6 font-semibold pt-14 mb-40">
       <section className="flex-[8]">
         <div className="flex justify-between">
           <Button asChild variant="outline" className="text-xl border dark:border-zinc-500 px-4 py-6">
