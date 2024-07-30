@@ -3,7 +3,7 @@ from api.dependencies.auth import validate_authenticate_user
 from api.dependencies.db import get_session
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio.session import AsyncSession
-from schemas.course import CourseCreate, CourseSchema, CourseSchemaId
+from schemas.course import CourseSchema, CourseSchemaId
 from crud.course import CourseCrud
 
 router = APIRouter()
