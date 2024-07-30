@@ -11,7 +11,7 @@ export const getCourses = async () => {
       channelId: courseItem.channel_id,
       name: courseItem.title,
       description: courseItem.description ?? '',
-      thumbnail: courseItem.title,
+      thumbnail: courseItem.thumbnail,
       publishedAt: courseItem.published_at,
     }));
   } catch (error) {

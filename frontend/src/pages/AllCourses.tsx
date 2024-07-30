@@ -1,6 +1,7 @@
 import { Card } from '@/components/Card';
 import { getCourses } from '@/services/api';
 import { Course } from '@/types/types';
+import { max250Chars } from '@/utils/formatStrings';
 import { useEffect, useState } from 'react';
 
 export default function AllCourses() {
@@ -21,7 +22,7 @@ export default function AllCourses() {
             key={course.id}
             courseId={course.id}
             courseName={course.name}
-            courseDescription={course.description}
+            courseDescription={max250Chars(course.description)}
             courseThumbnail={course.thumbnail}
             publicationDate={course.publishedAt}
           />

@@ -15,5 +15,6 @@ export interface CourseResponse {
   channel_id:   string;
   title:        string;
   description:  null | string;
+  thumbnail: string;
   published_at: string;
 }
