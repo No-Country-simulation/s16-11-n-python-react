@@ -1,5 +1,6 @@
 import { useTheme } from '@/components/ThemeProvider';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useEffect } from 'react';
 import { FaLinkedin, FaTwitch, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { DefaultParams, Link } from 'wouter';
@@ -11,6 +12,10 @@ interface Props {
 export function CourseDetail({ params }: Props) {
   const { id } = params as { id: string };
   const { theme } = useTheme();
+
+  useEffect(() => {
+    window.scrollTo({top:0,behavior:'smooth'})
+  }, []);
 
   const titleClasses = 'text-4xl font-semibold';
   const socialLogoClasses = 'text-5xl transition-transform duration-300 hover:scale-125';
@@ -33,7 +38,7 @@ export function CourseDetail({ params }: Props) {
   return (
     <main>
       <section
-        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white bg-cover"
+        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white"
         style={{
           background: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${'https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg'})`,
         }}
@@ -51,7 +56,7 @@ export function CourseDetail({ params }: Props) {
           <div className="flex-1 px-6 md:sticky">
             <img
               src="https://yt3.ggpht.com/ytc/AIdro_lPBcTSzb5NqMhKQSo6aaTPcnPM2EZhvhdcQi0YvPmflQ=s800-c-k-c0x00ffffff-no-rj"
-              alt="photo of midu"
+              alt={`photo of ${'midu'}`}
               className="block w-full"
             />
             <div className="px-4">

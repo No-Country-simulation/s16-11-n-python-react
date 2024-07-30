@@ -19,7 +19,8 @@ export const Card: React.FC<Tcourse> = ({
           <img
             src={courseThumbnail}
             alt={`${courseName} thumbnail`}
-            className="rounded-lg hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="rounded-lg cursor-pointer w-full aspect-video hover:scale-105 transition-all duration-300"
+            style={{objectFit:'cover'}}
           />
         </HoverCardTrigger>
         <HoverCardContent className="p-0 cursor-pointer z-[5]">

@@ -11,7 +11,7 @@ export function Home() {
     });
   }, []);
   return (
-    <main className="max-w-desktop h-full">
+    <main className="max-w-desktop h-full mx-auto">
       <HomeSlice/>
       <div className="mx-auto w-4/5 h-full">
         <CarouselHomeWithNumber />

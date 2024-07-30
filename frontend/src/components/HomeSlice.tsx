@@ -21,11 +21,11 @@ export default function HomeSlice() {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper h-[90vh] w-4/5"
+        className="mySwiper max-h-[850px] h-[90vh] xl:w-[80%] 2xl:w-[90%]"
       >
         {TestArrayCourses.map((course) => (
           <SwiperSlide>
-            <img src={course.courseThumbnail} className='h-[85vh] object-cover mx-auto'/>
+            <img src={course.courseThumbnail} className='h-[85vh] max-h-[815px] object-cover mx-auto'/>
           </SwiperSlide>
         ))}
       </Swiper>
