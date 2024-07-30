@@ -19,7 +19,7 @@ class Course(Base):
         String, primary_key=True, unique=True, nullable=False
     )
     title: Mapped[str] = mapped_column(String)
-    # thumbnail: Mapped[str] = mapped_column(String)
+    thumbnail: Mapped[str] = mapped_column(String)
     description: Mapped[Optional[str]] = mapped_column(String)
     published_at: Mapped[Date] = mapped_column(Date)
     # is_active: Mapped[bool] = mapped_column(default=True)
