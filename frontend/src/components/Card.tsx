@@ -19,10 +19,10 @@ export const Card: React.FC<Tcourse> = ({
           <img
             src={courseThumbnail}
             alt={`${courseName} thumbnail`}
-            className="rounded-lg hover:opacity-75 cursor-pointer"
+            className="rounded-lg hover:scale-105 transition-all duration-300 cursor-pointer"
           />
         </HoverCardTrigger>
-        <HoverCardContent className="p-0 cursor-pointer">
+        <HoverCardContent className="p-0 cursor-pointer z-[5]">
           <div className="flex flex-col justify-center">
             <div className="flex flex-col space-y-1 p-3">
               <div className="flex items-center">
