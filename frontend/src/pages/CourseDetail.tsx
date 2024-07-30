@@ -40,7 +40,7 @@ export function CourseDetail({ params }: Props) {
       <section
         className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white"
         style={{
-          background: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${'https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg'})`,
+          background: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${'https://i.ytimg.com/vi/344uwF1z2Gg/maxresdefault.jpg'})`, backgroundSize: 'cover',
         }}
       >
         <div className="max-w-1600 mx-auto pt-32 w-full">
