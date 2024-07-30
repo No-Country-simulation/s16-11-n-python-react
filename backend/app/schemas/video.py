@@ -3,7 +3,6 @@ from datetime import date
 
 
 class VideoBase(BaseModel):
-    id: str
     course_id: str | None = None
     title: str
     thumbnail: str
@@ -20,3 +19,11 @@ class VideoSchema(VideoBase):
 
     class Config:
         from_attributes = True
+
+
+class VideoCourseSchema(BaseModel):
+    id: str
+    title: str
+    thumbnail: str
+    description: str | None = None
+    published_at: date
