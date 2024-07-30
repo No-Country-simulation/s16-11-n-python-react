@@ -2,7 +2,7 @@ from typing import List
 from pydantic import BaseModel
 from datetime import date
 from .video import VideoCourseSchema
-from .channel import ChannelBase
+from .channel import ChannelSchema
 
 
 class CourseBase(BaseModel):
@@ -11,6 +11,7 @@ class CourseBase(BaseModel):
     thumbnail: str | None = None
     description: str | None = None
     published_at: date
+    video: List[VideoCourseSchema] | None = []
 
 
 class CourseCreate(CourseBase):
@@ -24,6 +25,12 @@ class CourseSchema(CourseBase):
         from_attributes = True
 
 
+class CourseVideoSchema(BaseModel):
+    title: str
+    thumbnail: str | None = None
+    description: str | None = None
+    published_at: date
+
+
 class CourseSchemaId(CourseSchema):
-    channel: ChannelBase
-    video: List[VideoCourseSchema]
+    channel: ChannelSchema
