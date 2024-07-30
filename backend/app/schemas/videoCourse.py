@@ -1,4 +1,4 @@
-from .course import CourseBase
+from .course import CourseVideoSchema
 from pydantic import BaseModel
 from datetime import date
 
@@ -16,4 +16,4 @@ class VideoBase(BaseModel):
 
 class VideoSchemaId(BaseModel):
     video: VideoBase
-    course: CourseBase
+    course: CourseVideoSchema

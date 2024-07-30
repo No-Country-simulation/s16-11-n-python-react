@@ -11,7 +11,6 @@ class CourseBase(BaseModel):
     thumbnail: str | None = None
     description: str | None = None
     published_at: date
-    video: List[VideoCourseSchema] | None = []
 
 
 class CourseCreate(CourseBase):
@@ -30,7 +29,9 @@ class CourseVideoSchema(BaseModel):
     thumbnail: str | None = None
     description: str | None = None
     published_at: date
+    video: List[VideoCourseSchema]
 
 
 class CourseSchemaId(CourseSchema):
+    video: List[VideoCourseSchema]
     channel: ChannelSchema
