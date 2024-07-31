@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { getClassData } from '@/services/api';
 import { ClassData } from '@/types/types';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import { useScroll } from '@/hooks/useScroll';
 
 interface Props {
   params: DefaultParams;
@@ -16,7 +19,6 @@ interface Props {
 
 export function ClassPage({ params }: Props) {
   const { id } = params as { id: string };
-  const videos = new Array(125).fill(1);
   const classRef = useRef<HTMLAnchorElement>(null);
 
   const [toggleContentList, setToggleContentList] = useState(false);
@@ -24,7 +26,7 @@ export function ClassPage({ params }: Props) {
   const [classData, setClassData] = useState<ClassData | null>(null);
 
   const isCurrentClass = (classId: string) => classId === id;
-
+  useScroll();
   useEffect(() => {
     (async () => {
       const data = await getClassData(id);
@@ -64,7 +66,10 @@ export function ClassPage({ params }: Props) {
       <section className="flex gap-6">
         <div className="flex-[8]">
           <div className="w-full aspect-video bg-gray-600 border border-gray-300 mt-6 rounded-md">
-            <img src={classData?.class.thumbnail} alt="" />
+            <LiteYouTubeEmbed
+              id={classData?.class.id ??  ''}
+              title={classData?.class.title ?? ''}
+            />
           </div>
           <div className="py-4 mt-4">
             <h1 className="text-2xl">{classData?.class.title}</h1>
