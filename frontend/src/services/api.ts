@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { API_URL } from '@/utils/config';
-import { CourseResponse, SingleCourseResponse } from './responses';
+import { ClassResponse, CourseResponse, SingleCourseResponse } from './responses';
 
 export const getCourses = async () => {
   try {
@@ -16,7 +16,7 @@ export const getCourses = async () => {
     }));
   } catch (error) {
     console.error(error);
-    throw new Error('Error at login');
+    throw new Error('Error at gettin courses');
   }
 };
 
@@ -50,7 +50,40 @@ export const getCourseDetail = async (courseId: string) => {
     };
   } catch (error) {
     console.error(error);
-    throw new Error('Error at login');
+    throw new Error('Error at getting course detail');
+  }
+};
+
+export const getClassData = async (classId: string) => {
+  try {
+    const { data } = await axios.get<ClassResponse>(`${API_URL}/videos/${classId}`);
+
+    return {
+      class: {
+        id: data.video.id,
+        title: data.video.title,
+        thumbnail: data.video.thumbnail,
+        description: data.video.description,
+        publishedAt: new Date(data.video.published_at),
+      },
+      course: {
+        id: data.course.id,
+        title: data.course.title,
+        description: data.course.description,
+        thumbnail: data.course.thumbnail,
+        publishedAt: new Date(data.course.published_at),
+      },
+      classes: data.course.video?.map((videoItem) => ({
+        id: videoItem.id,
+        title: videoItem.title,
+        description: videoItem.description,
+        thumbnail: videoItem.thumbnail,
+        publishedAt: new Date(videoItem.published_at,)
+      })),
+    };
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error at getting classes');
   }
 };
 

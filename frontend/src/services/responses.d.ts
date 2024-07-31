@@ -47,3 +47,25 @@ export interface Video {
   description:  string;
   published_at: string;
 }
+
+export interface ClassResponse {
+  video:  Course;
+  course: Course;
+}
+
+export interface Course {
+  id:           string;
+  title:        string;
+  thumbnail:    string;
+  description:  string;
+  published_at: Date;
+  video:       Video[];
+}
+
+export interface Video {
+  id:           string;
+  title:        string;
+  thumbnail:    string;
+  description:  string;
+  published_at: Date;
+}
