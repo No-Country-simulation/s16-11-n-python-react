@@ -1,15 +1,10 @@
 import { Card } from '@/components/Card';
 import { EmptyCourses } from '@/components/EmptyCourses';
 import { TestArrayCourses } from '@/components/TestArrayCourses';
-import { useEffect } from 'react';
+import { useScroll } from '@/hooks/useScroll';
 
 export const CoursesInProgress = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
+  useScroll();
   const courseState = 'Cursos en progreso';
 
   return (
