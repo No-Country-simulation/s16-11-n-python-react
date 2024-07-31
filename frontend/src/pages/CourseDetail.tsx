@@ -45,7 +45,7 @@ export function CourseDetail({ params }: Props) {
   return (
     <main>
       <section
-        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white"
+        className="bg-center max-w-desktop h-screen max-h-[916px] aspect-video mx-auto w-full flex items-center text-white"
         style={{
           backgroundImage: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${course?.thumbnail})`,
           backgroundSize: 'cover',
