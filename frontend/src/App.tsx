@@ -1,6 +1,6 @@
 import { ThemeProvider } from './components/ThemeProvider';
 import Router from './routes/Router';
-import { Toaster } from './components/ui/toaster';
+import { Toaster } from '@/components/ui/sonner';
 import { ChatBot } from './components/ChatBot';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';

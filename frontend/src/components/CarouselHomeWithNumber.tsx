@@ -10,7 +10,7 @@ export const CarouselHomeWithNumber = () => {
       }}
       className="w-full"
     >
-      <CarouselContent className="h-full my-5">
+      <CarouselContent className="h-full my-1">
         {TestArrayCourses.map((card, index) => (
           <CarouselItem key={index} className="basis-1/1 md:basis-1/2 lg:basis-1/4 h-full">
             <div className="w-full flex items-center">

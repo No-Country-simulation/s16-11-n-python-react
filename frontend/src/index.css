@@ -5,3 +5,9 @@
 #root {
   @apply dark:bg-zinc-950 bg-zinc-50 dark:text-white min-h-screen;
 }
+.swiper-pagination-bullet {
+  background: #D9D9D9;
+}
+.swiper-button-prev,.swiper-button-next {
+  color: #D9D9D9;
+}

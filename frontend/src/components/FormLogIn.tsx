@@ -4,12 +4,13 @@ import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from 'sonner';
 import { ButtonLoading } from './ModalForm';
 import { useState } from 'react';
 import { useStore } from '@/contexts/store';
 import { loginUser } from '@/services/auth';
 import { useLocation } from 'wouter';
+import { FaCheck } from 'react-icons/fa';
 
 interface FormLogInProps {
   handleRegister: () => void;
@@ -45,24 +46,21 @@ export const FormLogIn: React.FC<FormLogInProps> = ({ handleRegister }) => {
       setAccessToken(dataUser.access_token);
       setLogin();
       location && setLocation('/cursos/nuevos-cursos');
-
-      toast({
-        title: 'Iniciaste sesion exitosamente!!!',
+      toast('Registro exitoso!', {
         description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-green-800 p-4 z-20">
-            <p className="text-white">Bienvenido {firstName}</p>
-          </pre>
+          <div className="mt-2 rounded-md p-4 z-20 flex justify-between">
+            <p className="text-white">Bienvenido {firstName} </p><FaCheck className='bg-green-700 rounded-full text-xl'/>
+            </div>
         ),
       });
     } catch (error) {
-      toast({
-        title: 'Error en su formulario',
+      setIsLoading(false);
+      toast('Error en su formulario', {
         description: (
           <div className="mt-2 max-w-[340px] rounded-md p-4 z-20">
             <h1 className="text-white inline">Por favor vuelve a intentarlo</h1>
           </div>
         ),
-        variant: 'destructive',
       });
     }
   }
