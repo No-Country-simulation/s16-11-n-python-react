@@ -19,6 +19,10 @@ export function CourseDetail({ params }: Props) {
   const [course, setCourse] = useState<ICourseDetail | null>(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({top:0,behavior:'smooth'})
+  }, []);
+
   const titleClasses = 'text-4xl font-semibold';
   const socialLogoClasses = 'text-5xl transition-transform duration-300 hover:scale-125';
   const courseColor = '#9d43de7a';
@@ -42,7 +46,7 @@ export function CourseDetail({ params }: Props) {
   return (
     <main>
       <section
-        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white bg-cover"
+        className="bg-center max-w-desktop aspect-video mx-auto w-full flex items-center text-white"
         style={{
           backgroundImage: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${course?.thumbnail})`,
           backgroundSize: 'cover',
