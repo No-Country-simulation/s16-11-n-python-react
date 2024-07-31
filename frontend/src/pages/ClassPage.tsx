@@ -7,6 +7,8 @@ import { BsFlag } from 'react-icons/bs';
 import { fillLeftZeros } from '@/utils/formatStrings';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { getClassData } from '@/services/api';
+import { ClassData } from '@/types/types';
 
 interface Props {
   params: DefaultParams;
@@ -19,8 +21,16 @@ export function ClassPage({ params }: Props) {
 
   const [toggleContentList, setToggleContentList] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [classData, setClassData] = useState<ClassData | null>(null);
 
-  const isCurrentClass = (idx: number) => String(idx) === id;
+  const isCurrentClass = (classId: string) => classId === id;
+
+  useEffect(() => {
+    (async () => {
+      const data = await getClassData(id);
+      setClassData(data);
+    })();
+  }, [id]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,7 +45,7 @@ export function ClassPage({ params }: Props) {
     <main className="max-w-[1000px] mx-auto font-semibold pt-14 mb-40">
       <section className="flex justify-between">
         <Button asChild variant="outline" className="text-xl border dark:border-zinc-500 px-4 py-6">
-          <Link href="/curso/a21">
+          <Link href={`/curso/${classData?.course.id}`}>
             <GoArrowLeft className="text-2xl mr-2" />
             Volver
           </Link>
@@ -54,10 +64,10 @@ export function ClassPage({ params }: Props) {
       <section className="flex gap-6">
         <div className="flex-[8]">
           <div className="w-full aspect-video bg-gray-600 border border-gray-300 mt-6 rounded-md">
-            <p className="text-4xl">Video</p>
+            <img src={classData?.class.thumbnail} alt="" />
           </div>
           <div className="py-4 mt-4">
-            <h1 className="text-2xl">Video name {id} - Lorem ipsum dolor sit amet consectetur.</h1>
+            <h1 className="text-2xl">{classData?.class.title}</h1>
           </div>
         </div>
         {toggleContentList && (
@@ -79,28 +89,28 @@ export function ClassPage({ params }: Props) {
                 </span>
                 <span className="text-sm">Ruta de conocimiento</span>
               </h3>
-              <h2 className="text-lg mt-4">Nombre del Curso 21</h2>
+              <h2 className="text-lg mt-4">{classData?.course.title}</h2>
             </div>
             <ScrollArea className="w-full aspect-[9/15.5] mt-4">
               <div className="flex flex-col gap-2 pr-[0.75rem]">
-                {videos.map((_, idx) => (
+                {classData?.classes.map((classItem, idx) => (
                   <Link
-                    key={`td-${idx}`}
-                    ref={isCurrentClass(idx) ? classRef : undefined}
-                    href={`/clase/${idx}`}
-                    className={`p-1 text-sm flex justify-between items-center gap-2 transition-colors duration-150 dark:hover:bg-zinc-700 hover:bg-zinc-300 ${isCurrentClass(idx) ? ' bg-zinc-200 dark:bg-zinc-800 rounded-lg' : ''}`}
+                    key={classItem.id}
+                    ref={isCurrentClass(classItem.id) ? classRef : undefined}
+                    href={`/clase/${classItem.id}`}
+                    className={`p-1 text-sm flex justify-between items-center gap-2 transition-colors duration-150 dark:hover:bg-zinc-700 hover:bg-zinc-300 ${isCurrentClass(classItem.id) ? ' bg-zinc-200 dark:bg-zinc-800 rounded-lg' : ''}`}
                   >
                     <span className="flex items-center gap-1">
                       <p className="text-end w-8">{fillLeftZeros(idx + 1)}.</p>
                       <img
-                        src="/"
-                        alt={`Thumbnail of the course ${idx}`}
-                        className="aspect-video h-18 rounded bg-zinc-500"
+                        src={classItem.thumbnail}
+                        alt={`Thumbnail of the course ${classItem.title}`}
+                        className="aspect-video h-12 rounded bg-zinc-500"
                       />
-                      <p>Curso lorem {idx + 1} lorem</p>
+                      <p>{classItem.title}</p>
                     </span>
                     <FaCheckCircle
-                      className={`text-xl flex-none ${idx < 10 ? 'text-green-500' : 'text-zinc-400 dark:text-white'}`}
+                      className={`text-xl flex-none ${idx < 5 ? 'text-green-500' : 'text-zinc-400 dark:text-white'}`}
                     />
                   </Link>
                 ))}

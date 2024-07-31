@@ -28,6 +28,12 @@ export interface Author {
   subs: number;
 }
 
+export interface ClassData {
+  class:   Class;
+  course:  Class;
+  classes: Class[];
+}
+
 export interface Class {
   id: string;
   title: string;

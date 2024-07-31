@@ -39,7 +39,7 @@ export function CourseDetail({ params }: Props) {
       setCourse(data);
       setLoading(false);
     })();
-  }, []);
+  }, [id]);
 
   if (loading) return <Loader />;
 
