@@ -18,7 +18,7 @@ export const ChatArea: React.FC<ChatAreaProp> = ({ chatMessages }) => {
   }, [chatMessages]);
 
   return (
-    <ScrollArea className="w-full h-56 mb-2 mx-auto flex justify-center items-center p-3 overflow-y-auto">
+    <ScrollArea className="w-full h-[85%] mb-2 mx-auto flex justify-center items-center p-3 overflow-y-auto">
       {chatMessages.map((message, index) => (
         <ChatMessage
           key={message.id}

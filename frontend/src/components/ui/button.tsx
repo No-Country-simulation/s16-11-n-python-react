@@ -21,6 +21,7 @@ const buttonVariants = cva(
         link: 'text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-50',
         login: 'bg-[#006E2F] text-zinc-900 dark:text-zinc-50 w-full',
         loading: 'bg-zinc-900 w-full text-white',
+        send: 'bg-[#1A98FF] w-full text-white hover:bg-[#1A98FF]/80',
       },
       size: {
         default: 'h-9 px-4 py-2',

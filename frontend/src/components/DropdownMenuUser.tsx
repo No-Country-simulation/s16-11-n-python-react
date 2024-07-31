@@ -11,6 +11,8 @@ import { FaRegFolder, FaRegMoon, FaRegSun, FaUser } from 'react-icons/fa';
 import { RxExit } from 'react-icons/rx';
 import { useTheme } from './ThemeProvider';
 import { useStore } from '@/contexts/store';
+import { Link } from 'wouter';
+import { UserAvatar } from './UserAvatar';
 
 export const DropdownMenuUser: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -23,14 +25,15 @@ export const DropdownMenuUser: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div>
-          <FaUser className="p-1 w-7 h-7 cursor-pointer text-[#006E2F] hover:text-[#2b8653]" />
+        <div className="flex justify-between items-center cursor-pointer">
+          <div className='mr-2'>{name}</div>
+          <UserAvatar />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[358px] h-[367px] px-10 mr-10 py-5">
         <DropdownMenuLabel className="flex justify-start items-center">
-          <div className="w-12 h-12 rounded-full bg-[#006E2F] mr-4 py-2 flex justify-center items-center">Avatar</div>
-          <div className="flex flex-col">
+          <UserAvatar />
+          <div className="flex flex-col ml-2">
             <div className="text-[15px]">{name}</div>
             <div className="text-[12px]">{email}</div>
           </div>
@@ -53,9 +56,9 @@ export const DropdownMenuUser: React.FC = () => {
         </DropdownMenuItem>
         <DropdownMenuItem className="flex my-3 cursor-pointer">
           <RxExit className="p-1 w-7 h-7" />
-          <p className="pl-2 font-bold" onClick={() => setLogout()}>
+          <Link to="~/" className="pl-2 font-bold" onClick={() => setLogout()}>
             Salir
-          </p>
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

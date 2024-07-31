@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from 'sonner';
 import { useState } from 'react';
 import { ButtonLoading } from './ModalForm';
 import { useStore } from '@/contexts/store';
 import { loginUser, registerUser } from '@/services/auth';
 import { useLocation } from 'wouter';
+import { FaCheck } from 'react-icons/fa';
 
 interface FormSignInProps {
   handleRegister: () => void;
@@ -52,26 +53,25 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
       setFirstName(dataUser.first_name);
       setEmail(dataUser.email);
       setLastName(dataUser.last_name);
-      toast({
-        title: 'Registro exitoso!!!',
+
+      toast('Registro exitoso!', {
         description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-green-800 p-4 z-20">
-            <code className="text-white">Bienvenido {dataUser.first_name}</code>
+          <pre className="mt-2 w-[340px] rounded-md p-4 z-20">
+            <code className="text-white">Bienvenido {dataUser.first_name} <FaCheck className='bg-green-600 rounded-full'/></code>
           </pre>
         ),
       });
       setAccessToken(dataAccess.access_token);
       setLogin();
-      location && setLocation('/cursos/nuevos-cursos');
+      location && setLocation('~/cursos/nuevos-cursos');
     } catch (error) {
-      toast({
-        title: 'Error en su formulario',
+      setIsLoading(false);
+      toast('Error en su formulario', {
         description: (
           <div className="mt-2 max-w-[340px] rounded-md p-4 z-20">
             <h1 className="text-white inline">Por favor vuelve a intentarlo</h1>
           </div>
         ),
-        variant: 'destructive',
       });
     }
   }
@@ -97,9 +97,9 @@ export const FormSignIn: React.FC<FormSignInProps> = ({ handleRegister }) => {
           name="lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-zinc-500">Usuario:</FormLabel>
+              <FormLabel className="text-zinc-500">Apellido:</FormLabel>
               <FormControl>
-                <Input placeholder="Usuario" {...field} />
+                <Input placeholder="Apellido" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

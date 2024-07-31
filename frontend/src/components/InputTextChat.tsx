@@ -49,16 +49,16 @@ export const InputTextChat: React.FC<InputTextChatProps> = ({ updateChatMessages
           control={form.control}
           name="messageSend"
           render={({ field }) => (
-            <FormItem className="h-full py-1">
-              <FormControl className="h-[70%] w-[220px]">
+            <FormItem className="h-full py-0.5">
+              <FormControl className="h-[70%] w-[280px]">
                 <Input placeholder="Enviar mensaje..." {...field} />
               </FormControl>
               <FormMessage className="text-[10px]" />
             </FormItem>
           )}
         />
-        <Button className="rounded-full h-12 w-12" type="submit">
-          <FaPaperPlane className="text-blue-600" />
+        <Button className="rounded-full h-12 w-12" variant={'send'} type="submit">
+          <FaPaperPlane className="text-white" />
         </Button>
       </form>
     </Form>
