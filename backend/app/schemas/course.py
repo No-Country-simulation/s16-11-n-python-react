@@ -25,6 +25,7 @@ class CourseSchema(CourseBase):
 
 
 class CourseVideoSchema(BaseModel):
+    id: str
     title: str
     thumbnail: str | None = None
     description: str | None = None
