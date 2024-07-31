@@ -1,4 +1,5 @@
 import { Card } from '@/components/Card';
+import { useScroll } from '@/hooks/useScroll';
 import { getCourses } from '@/services/api';
 import { Course } from '@/types/types';
 import { max250Chars } from '@/utils/formatStrings';
@@ -6,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 export default function AllCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
-
+  useScroll();
   useEffect(() => {
     (async () => {
       const coursesData = await getCourses();

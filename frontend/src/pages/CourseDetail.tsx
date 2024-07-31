@@ -8,6 +8,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { DefaultParams, Link } from 'wouter';
 import ComponentsText from '@/components/ComponentsText';
 import Loader from '@/components/Loader';
+import { useScroll } from '@/hooks/useScroll';
 
 interface Props {
   params: DefaultParams;
@@ -19,9 +20,7 @@ export function CourseDetail({ params }: Props) {
   const [course, setCourse] = useState<ICourseDetail | null>(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo({top:0,behavior:'smooth'})
-  }, []);
+  useScroll();
 
   const titleClasses = 'text-4xl font-semibold';
   const socialLogoClasses = 'text-5xl transition-transform duration-300 hover:scale-125';

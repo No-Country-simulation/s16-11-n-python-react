@@ -1,14 +1,9 @@
 import { Card } from '@/components/Card';
 import { TestArrayCourses } from '@/components/TestArrayCourses';
-import { useEffect } from 'react';
+import { useScroll } from '@/hooks/useScroll';
 
 export const NewCourses = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
+  useScroll();
 
   return (
     <main className="flex flex-col items-center w-full">
