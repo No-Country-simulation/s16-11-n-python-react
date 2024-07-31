@@ -36,7 +36,6 @@ router = APIRouter()
 async def get_video_id(
     video_id: str,
     db: AsyncSession = Depends(get_session),
-    current_user: str = Depends(validate_authenticate_user),
 ):
     video = await VideoCrud(db).get_id(video_id)
 
@@ -52,7 +51,6 @@ async def get_video_id(
 )
 async def get_all_videos(
     db: AsyncSession = Depends(get_session),
-    current_user: str = Depends(validate_authenticate_user),
 ):
     all_videos = await VideoCrud(db).get_all()
 
