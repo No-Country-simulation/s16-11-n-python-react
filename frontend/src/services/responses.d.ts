@@ -18,3 +18,32 @@ export interface CourseResponse {
   thumbnail: string;
   published_at: string;
 }
+
+export interface SingleCourseResponse {
+  channel_id:   string;
+  title:        string;
+  thumbnail:    string;
+  description:  string;
+  published_at: string;
+  id:           string;
+  channel:      Channel;
+  video:        Video[];
+}
+
+export interface Channel {
+  channel_name: string;
+  description:  string;
+  custom_url:   string;
+  thumbnail:    string;
+  country:      string;
+  views:        number;
+  subs:         number;
+}
+
+export interface Video {
+  id:           string;
+  title:        string;
+  thumbnail:    string;
+  description:  string;
+  published_at: string;
+}
