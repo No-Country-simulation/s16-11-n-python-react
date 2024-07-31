@@ -1,11 +1,4 @@
 TODO:
-  - Install ShadcnUI
   - Install motion
-  - Install router
+  - Install linter
 
-
-  ```
-  <Route path="/users/:name">
-    {(params) => <>Hello, {params.name}!</>}
-  </Route>
-  ```
