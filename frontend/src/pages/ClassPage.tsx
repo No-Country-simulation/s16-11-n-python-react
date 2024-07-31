@@ -67,8 +67,8 @@ export function ClassPage({ params }: Props) {
         <div className="flex-[8]">
           <div className="w-full aspect-video bg-gray-600 border border-gray-300 mt-6 rounded-md">
             <LiteYouTubeEmbed
-              id={classData?.class.id}
-              title={classData?.class.title}
+              id={classData?.class.id ??  ''}
+              title={classData?.class.title ?? ''}
             />
           </div>
           <div className="py-4 mt-4">
