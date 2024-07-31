@@ -16,7 +16,6 @@ interface Props {
 
 export function ClassPage({ params }: Props) {
   const { id } = params as { id: string };
-  const videos = new Array(125).fill(1);
   const classRef = useRef<HTMLAnchorElement>(null);
 
   const [toggleContentList, setToggleContentList] = useState(false);
