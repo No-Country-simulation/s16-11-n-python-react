@@ -87,6 +87,4 @@ export const getClassData = async (classId: string) => {
   }
 };
 
-export const getAuthors = async () => {};
-
 export const getUserCourses = async () => {};
