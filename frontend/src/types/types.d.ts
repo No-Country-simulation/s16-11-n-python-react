@@ -29,8 +29,8 @@ export interface Author {
 }
 
 export interface ClassData {
-  class:   Class;
-  course:  Class;
+  class: Class;
+  course: Class;
   classes: Class[];
 }
 
@@ -40,4 +40,22 @@ export interface Class {
   description: string;
   thumbnail: string;
   publishedAt: Date;
+}
+
+export interface SmartAnswer {
+  answer: string;
+  courses: CourseAnswer[];
+}
+
+export interface CourseAnswer {
+  courseId: string;
+  courseName: string;
+  thumbnail: string;
+  channel: string;
+  classes?: Class[];
+}
+
+export interface ClassAnswer {
+  class_id: string;
+  class_title: string;
 }

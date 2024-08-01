@@ -24,7 +24,7 @@ export default function HomeSlice() {
       >
         {coursesSlice.map((course) => (
           <SwiperSlide key={course.id}>
-            <img             
+            <img
               src={course.thumbnail}
               className="h-[85vh] max-h-[815px] object-cover mx-auto"
               alt={course.name}
