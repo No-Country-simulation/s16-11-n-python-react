@@ -2,9 +2,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { TestArrayCourses } from './TestArrayCourses';
+import { coursesSlice } from '@/utils/arrayCourses';
 
 export default function HomeSlice() {
   return (
@@ -23,9 +22,14 @@ export default function HomeSlice() {
         modules={[Autoplay, Pagination, Navigation]}
         className="max-h-[850px] h-[90vh] xl:w-[80%] 2xl:w-[90%]"
       >
-        {TestArrayCourses.map((course) => (
+        {coursesSlice.map((course) => (
           <SwiperSlide>
-            <img src={course.courseThumbnail} className='h-[85vh] max-h-[815px] object-cover mx-auto' alt={course.courseName}/>
+            <img
+              key={course.id}
+              src={course.thumbnail}
+              className="h-[85vh] max-h-[815px] object-cover mx-auto"
+              alt={course.name}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

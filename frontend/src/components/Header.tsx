@@ -14,7 +14,7 @@ export const Header = () => {
           <Logo />
         </Link>
         <div className="flex justify-between items-center w-[60%]">
-          <div className="flex justify-around items-center w-[35%]">
+          <div className="flex justify-end gap-8 items-center w-[35%]">
             <Link
               className="block my-2 py-2 hover:text-zinc-300 text-lg"
               to={isLoggedIn ? '~/cursos/cursos-en-progreso' : '~/todos-los-cursos'}
