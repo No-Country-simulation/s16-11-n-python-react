@@ -103,7 +103,7 @@ export const getSmartResponse = async (question: string) => {
 
     return {
       answer: response.answer,
-      courses: response.courses.map((courseItem) => ({
+      courses: response.courses?.map((courseItem) => ({
         courseId: courseItem.course_id,
         courseName: courseItem.course_name,
         thumbnail: courseItem.thumbnail,
