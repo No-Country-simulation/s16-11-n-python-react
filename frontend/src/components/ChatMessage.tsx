@@ -1,3 +1,4 @@
+import { Bot } from './Bot';
 import { UserAvatar } from './UserAvatar';
 
 interface ChatMessageProp {
@@ -11,7 +12,9 @@ export const ChatMessage: React.FC<ChatMessageProp> = ({ type, text, scrollRef }
     <div ref={scrollRef} className={`flex ${type === 'received' ? '' : 'flex-row-reverse'} my-2`}>
       <div>
         {type === 'received' ? (
-          <div className="flex justify-center items-center w-10 h-10 rounded-full bg-slate-500">Bot</div>
+          <div className="flex justify-center items-center w-12 h-12 rounded-full">
+            <Bot />
+          </div>
         ) : (
           <UserAvatar />
         )}

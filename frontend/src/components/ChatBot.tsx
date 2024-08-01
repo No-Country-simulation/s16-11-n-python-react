@@ -2,7 +2,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/compon
 import { InputTextChat } from './InputTextChat';
 import { ChatArea } from './ChatArea';
 import { useState } from 'react';
-import chatbot from '/chatbot.png';
+import { Bot } from './Bot';
 
 export interface TchatMessage {
   id: string;
@@ -24,7 +24,7 @@ export const ChatBot: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="fixed bottom-10 right-10 w-24 h-24 rounded-full cursor-pointer hover:scale-105 hover:translate-x-1 z-20">
-        <img src={chatbot} alt="avatar chatbot" />
+        <Bot />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[90%] sm:w-[400px] sm:h-[430px] flex flex-col py-2 mr-10 dark:bg-[#00050D]">
         <ChatArea chatMessages={chatMessages} />

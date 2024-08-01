@@ -23,9 +23,8 @@ export default function HomeSlice() {
         className="max-h-[850px] h-[90vh] xl:w-[80%] 2xl:w-[90%]"
       >
         {coursesSlice.map((course) => (
-          <SwiperSlide>
-            <img
-              key={course.id}
+          <SwiperSlide key={course.id}>
+            <img             
               src={course.thumbnail}
               className="h-[85vh] max-h-[815px] object-cover mx-auto"
               alt={course.name}
