@@ -40,14 +40,14 @@ export function CourseDetail({ params }: Props) {
     })();
   }, [id]);
 
-  if (loading) return <Loader />;
+  if (loading) return <Loader className="py-36" />;
 
   return (
     <main>
       <section
         className="bg-center max-w-desktop h-screen max-h-[916px] aspect-video mx-auto w-full flex items-center text-white"
         style={{
-          backgroundImage: `linear-gradient(to bottom, #09090b 5%, #09090b5f 10%), url(${course?.thumbnail})`,
+          backgroundImage: `linear-gradient(to bottom, #09090b 5%, #09090baa 10%), url(${course?.thumbnail})`,
           backgroundSize: 'cover',
         }}
       >

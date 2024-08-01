@@ -44,7 +44,7 @@ export function ClassPage({ params }: Props) {
   }, [toggleContentList, id]);
 
   return (
-    <main className="max-w-[1000px] mx-auto font-semibold pt-14 mb-40">
+    <main className="max-w-8xl mx-auto font-semibold pt-14 mb-40">
       <section className="flex justify-between">
         <Button asChild variant="outline" className="text-xl border dark:border-zinc-500 px-4 py-6">
           <Link href={`/curso/${classData?.course.id}`}>
@@ -63,9 +63,9 @@ export function ClassPage({ params }: Props) {
           {isButtonHovered && <span className="animate-show-item pr-1">Lista de contenidos</span>}
         </Button>
       </section>
-      <section className="flex gap-6">
+      <section className="flex gap-6 mt-6">
         <div className="flex-[8]">
-          <div className="w-full aspect-video bg-gray-600 border border-gray-300 mt-6 rounded-md">
+          <div className="w-full aspect-video bg-gray-600 border border-gray-300 rounded-md overflow-hidden">
             <LiteYouTubeEmbed
               id={classData?.class.id ??  ''}
               title={classData?.class.title ?? ''}
@@ -87,7 +87,7 @@ export function ClassPage({ params }: Props) {
                 Ocultar
               </Button>
             </div>
-            <div className="dark:bg-zinc-950 py-3">
+            <div className="dark:bg-[#00050D] py-3">
               <h3 className="flex items-center gap-2">
                 <span className="dark:bg-zinc-800 rounded-full flex items-center justify-center h-7 w-7 p-1">
                   <BsFlag className="text-md" />
