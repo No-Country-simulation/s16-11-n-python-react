@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { DefaultParams, Link } from 'wouter';
 import { IoIosArrowBack } from 'react-icons/io';
-import { FaCheckCircle } from 'react-icons/fa';
 import { GoArrowLeft } from 'react-icons/go';
 import { BsFlag } from 'react-icons/bs';
 import { fillLeftZeros } from '@/utils/formatStrings';
@@ -114,9 +113,6 @@ export function ClassPage({ params }: Props) {
                       />
                       <p>{classItem.title}</p>
                     </span>
-                    <FaCheckCircle
-                      className={`text-xl flex-none ${idx < 5 ? 'text-green-500' : 'text-zinc-400 dark:text-white'}`}
-                    />
                   </Link>
                 ))}
               </div>
