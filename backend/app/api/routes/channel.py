@@ -9,20 +9,19 @@ from crud.channel import ChannelCrud
 router = APIRouter()
 
 
-@router.post(
-    "/",
-    status_code=status.HTTP_201_CREATED,
-    response_model=ChannelSchema,
-)
-async def create_channel(
-    create_channel: ChannelCreate,
-    db: AsyncSession = Depends(get_session),
-    current_user: str = Depends(validate_authenticate_user),
-):
-    # exist_channel = await ChannelCrud(db).get_all_by_attribute('')
-    new_channel = await ChannelCrud(db).create(create_channel)
+# @router.post(
+#     "/",
+#     status_code=status.HTTP_201_CREATED,
+#     response_model=ChannelSchema,
+# )
+# async def create_channel(
+#     create_channel: ChannelCreate,
+#     db: AsyncSession = Depends(get_session),
+# ):
+#     # exist_channel = await ChannelCrud(db).get_all_by_attribute('')
+#     new_channel = await ChannelCrud(db).create(create_channel)
 
-    return new_channel
+#     return new_channel
 
 
 @router.get(
@@ -33,7 +32,6 @@ async def create_channel(
 async def get_channel_id(
     channel_id: str,
     db: AsyncSession = Depends(get_session),
-    current_user: str = Depends(validate_authenticate_user),
 ):
     channel = await ChannelCrud(db).get(channel_id)
 
@@ -47,7 +45,6 @@ async def get_channel_id(
 )
 async def get_all_channel(
     db: AsyncSession = Depends(get_session),
-    current_user: str = Depends(validate_authenticate_user),
 ):
     channel = await ChannelCrud(db).get_all()
 
