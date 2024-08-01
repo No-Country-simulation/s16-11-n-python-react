@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '@/utils/config';
-import { ClassResponse, CourseResponse, SingleCourseResponse } from './responses';
+import { AIResponse, ClassResponse, CourseResponse, SingleCourseResponse, SmartAnswerResponse } from './responses';
+import { SmartAnswer } from '@/types/types';
 
 export const getCourses = async () => {
   try {
@@ -16,7 +17,7 @@ export const getCourses = async () => {
     }));
   } catch (error) {
     console.error(error);
-    throw new Error('Error at gettin courses');
+    throw new Error('Error at getting courses');
   }
 };
 
@@ -78,7 +79,7 @@ export const getClassData = async (classId: string) => {
         title: videoItem.title,
         description: videoItem.description,
         thumbnail: videoItem.thumbnail,
-        publishedAt: new Date(videoItem.published_at,)
+        publishedAt: new Date(videoItem.published_at),
       })),
     };
   } catch (error) {
@@ -87,4 +88,31 @@ export const getClassData = async (classId: string) => {
   }
 };
 
-export const getUserCourses = async () => {};
+export const getSmartResponse = async (question: string) => {
+  try {
+    const formData = new FormData();
+    formData.append('pregunta', question);
+
+    const {
+      data: { respuesta },
+    } = await axios.post<AIResponse>(`${API_URL}/chatbot/`, formData, {
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    });
+
+    const response = JSON.parse(respuesta) as SmartAnswerResponse;
+
+    return {
+      answer: response.answer,
+      courses: response.courses.map((courseItem) => ({
+        courseId: courseItem.course_id,
+        courseName: courseItem.course_name,
+        thumbnail: courseItem.thumbnail,
+        channel: courseItem.channel,
+        classes: courseItem.classes ?? [],
+      })),
+    } as SmartAnswer;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Error at getting a smart answer');
+  }
+};

@@ -2,11 +2,14 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { TchatMessage } from './ChatBot';
 import { useEffect, useRef } from 'react';
 import { ChatMessage } from './ChatMessage';
+import Loader from './Loader';
 
 interface ChatAreaProp {
   chatMessages: Array<TchatMessage>;
+  isLoadingAnswer: boolean;
 }
-export const ChatArea: React.FC<ChatAreaProp> = ({ chatMessages }) => {
+
+export const ChatArea: React.FC<ChatAreaProp> = ({ chatMessages, isLoadingAnswer }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (scrollRef.current) {
@@ -24,9 +27,11 @@ export const ChatArea: React.FC<ChatAreaProp> = ({ chatMessages }) => {
           key={message.id}
           type={message.type}
           text={message.text}
+          courses={message.courses}
           scrollRef={index === chatMessages.length - 1 ? scrollRef : undefined}
         />
       ))}
+      {isLoadingAnswer && <Loader />}
     </ScrollArea>
   );
 };
