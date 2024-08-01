@@ -99,8 +99,6 @@ export const getSmartResponse = async (question: string) => {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     });
 
-    console.log(respuesta)
-
     const response = JSON.parse(respuesta) as SmartAnswerResponse;
 
     return {
