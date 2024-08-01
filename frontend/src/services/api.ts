@@ -99,11 +99,13 @@ export const getSmartResponse = async (question: string) => {
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     });
 
+    console.log(respuesta)
+
     const response = JSON.parse(respuesta) as SmartAnswerResponse;
 
     return {
       answer: response.answer,
-      courses: response.courses.map((courseItem) => ({
+      courses: response.courses?.map((courseItem) => ({
         courseId: courseItem.course_id,
         courseName: courseItem.course_name,
         thumbnail: courseItem.thumbnail,
