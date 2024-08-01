@@ -2,7 +2,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/compon
 import { InputTextChat } from './InputTextChat';
 import { ChatArea } from './ChatArea';
 import { useState } from 'react';
-import chatbot from '/chatbot.png';
+import { Bot } from './Bot';
 import { getSmartResponse } from '@/services/api';
 import { CourseAnswer } from '@/types/types';
 
@@ -10,7 +10,7 @@ export interface TchatMessage {
   id: string;
   type: 'received' | 'sent';
   text: string;
-  courses?: CourseAnswer[]
+  courses?: CourseAnswer[];
 }
 
 const INITIAL_CHAT: TchatMessage[] = [
@@ -33,7 +33,7 @@ export const ChatBot: React.FC = () => {
       id: crypto.randomUUID(),
       type: 'received',
       text: response.answer,
-      courses: response.courses
+      courses: response.courses,
     });
     setIsLoadingAnswer(false);
   };
@@ -41,7 +41,7 @@ export const ChatBot: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="fixed bottom-10 right-10 w-24 h-24 rounded-full cursor-pointer hover:scale-105 hover:translate-x-1 z-20">
-        <img src={chatbot} alt="avatar chatbot" />
+        <Bot />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[90%] sm:w-[450px] sm:h-[550px] flex flex-col py-2 mr-10 dark:bg-[#00050D]">
         <ChatArea chatMessages={chatMessages} isLoadingAnswer={isLoadingAnswer} />
