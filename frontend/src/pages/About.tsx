@@ -3,7 +3,7 @@ import { useScroll } from "@/hooks/useScroll";
 export const About = () => {
   useScroll();
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-center text-4xl font-bold">Sobre Nosotros</h1>
       <h2 className="mt-4 text-lg font-bold">Bienvenido a TechIAcademic!</h2>
       <p className="mt-2">

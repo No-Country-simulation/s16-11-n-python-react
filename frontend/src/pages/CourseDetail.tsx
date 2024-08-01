@@ -51,7 +51,7 @@ export function CourseDetail({ params }: Props) {
           backgroundSize: 'cover',
         }}
       >
-        <div className="max-w-1600 mx-auto pt-32 w-full">
+        <div className="max-w-1600 mx-auto pt-32 w-full pl-8">
           <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-7xl text-balance w-3/5">
             {course?.title}
           </h1>
