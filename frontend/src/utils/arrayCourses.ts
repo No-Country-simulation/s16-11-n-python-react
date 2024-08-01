@@ -1,4 +1,4 @@
-import { getCourses } from '@/services/api';
+import courses from '../mocks/courses.json';
 
 function getRandomCourses<T>(arr: T[], num: number): T[] {
   const result: T[] = [];
@@ -15,17 +15,17 @@ function getRandomCourses<T>(arr: T[], num: number): T[] {
   return result;
 }
 
-export const coursesSlice = async () => {
-  const allCourses = await getCourses();
-  return allCourses.slice(1, 10);
-};
+export const allCourses = courses.map((courseItem) => ({
+  id: courseItem.id,
+  channelId: courseItem.channel_id,
+  name: courseItem.title,
+  description: courseItem.description ?? '',
+  thumbnail: courseItem.thumbnail,
+  publishedAt: courseItem.published_at,
+}));
 
-export const randomCourses = async () => {
-  const allCourses = await getCourses();
-  getRandomCourses(allCourses, 9);
-};
+export const coursesSlice = allCourses.slice(1, 10);
 
-export const randomCourses2 = async () => {
-  const allCourses = await getCourses();
-  getRandomCourses(allCourses, 4);
-};
+export const randomCourses = getRandomCourses(allCourses, 9);
+
+export const randomCourses2 = getRandomCourses(allCourses, 4);
