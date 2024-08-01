@@ -8,7 +8,7 @@ export const Header = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#00050D]  dark:bg-[#00050D]/95 text-white">
+    <header className="sticky top-0 z-50 bg-[#00050D] dark:bg-[#00050D]/95 text-white">
       <div className="max-w-desktop mx-auto h-16 flex justify-between px-10 items-center">
         <Link href="~/">
           <Logo />
