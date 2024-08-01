@@ -1,6 +1,7 @@
 import { CourseAnswer } from '@/types/types';
 import { UserAvatar } from './UserAvatar';
 import CourseChat from './CourseChat';
+import { Bot } from './Bot';
 
 interface ChatMessageProp {
   type: 'received' | 'sent';
@@ -15,7 +16,9 @@ export const ChatMessage: React.FC<ChatMessageProp> = ({ type, text, courses, sc
       <div className={`flex${type === 'received' ? '' : ' flex-row-reverse'} my-2`}>
         <div>
           {type === 'received' ? (
-            <div className="flex justify-center items-center w-10 h-10 rounded-full bg-slate-500">Bot</div>
+            <div className="flex justify-center items-center w-10 h-10 rounded-full bg-slate-500">
+              <Bot />
+            </div>
           ) : (
             <UserAvatar />
           )}
