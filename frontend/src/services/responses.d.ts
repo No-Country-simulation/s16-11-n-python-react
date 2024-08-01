@@ -69,3 +69,25 @@ export interface Video {
   description:  string;
   published_at: Date;
 }
+
+export interface AIResponse {
+  respuesta: string;
+}
+
+export interface SmartAnswerResponse {
+  answer: string;
+  courses: CourseAnswer[];
+}
+
+interface CourseAnswer {
+  course_id: string;
+  course_name: string;
+  thumbnail: string;
+  channel: string;
+  classes?: Class[];
+}
+
+interface ClassAnswer {
+  class_id: string;
+  class_title: string;
+}
