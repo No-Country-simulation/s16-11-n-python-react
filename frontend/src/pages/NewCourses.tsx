@@ -1,9 +1,11 @@
 import { Card } from '@/components/Card';
+import { useStore } from '@/contexts/store';
 import { useScroll } from '@/hooks/useScroll';
-import { allCourses } from '@/utils/arrayCourses';
 import { max250Chars } from '@/utils/formatStrings';
 
 export const NewCourses = () => {
+  const allCourses = useStore((state) => state.courses);
+
   useScroll();
 
   return (

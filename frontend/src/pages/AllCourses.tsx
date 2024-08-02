@@ -1,19 +1,12 @@
 import { Card } from '@/components/Card';
+import { useStore } from '@/contexts/store';
 import { useScroll } from '@/hooks/useScroll';
-import { getCourses } from '@/services/api';
-import { Course } from '@/types/types';
 import { max250Chars } from '@/utils/formatStrings';
-import { useEffect, useState } from 'react';
 
 export default function AllCourses() {
-  const [courses, setCourses] = useState<Course[]>([]);
   useScroll();
-  useEffect(() => {
-    (async () => {
-      const coursesData = await getCourses();
-      setCourses(coursesData);
-    })();
-  }, []);
+  const courses = useStore((state) => state.courses);
+
 
   return (
     <main className="max-w-8xl mx-auto grid gap-8 grid-cols-[repeat(auto-fill,minmax(250px,_1fr))] py-20">
