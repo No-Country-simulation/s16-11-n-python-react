@@ -71,6 +71,7 @@ model = genai.GenerativeModel(
     }
 
     Only include the property 'classes' if you have mentioned a class or classes from the course/courses that you gave in you answer, otherwise don't send the property classes.
+    Your answer must be in text format, in any case reply in Markdown format, generate the answer in the JSON Schema I provided before, include every comma, period, bracket, etc because it will be parsed.
     """,
 )
 
