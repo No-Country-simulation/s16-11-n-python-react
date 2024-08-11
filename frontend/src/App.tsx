@@ -1,11 +1,19 @@
+import { ThemeProvider } from './components/ThemeProvider';
 import Router from './routes/Router';
+import { Toaster } from '@/components/ui/sonner';
+import { ChatBot } from './components/ChatBot';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
-    <>
-      <h1>Educa AI</h1>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <Header />
       <Router />
-    </>
+      <Footer />
+      <ChatBot />
+      <Toaster />
+    </ThemeProvider>
   );
 }
 
