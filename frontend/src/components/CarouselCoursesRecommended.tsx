@@ -13,17 +13,17 @@ export const CarouselCoursesRecommended = () => {
     setCourses(nineCourses(allcourses))
   }, [])
   return (
-    <div className="h-full flex flex-col my-5 ">
+    <div className="h-full flex flex-col my-5">
       <h3 className="text-xl font-bold p-2">Cursos recomendados:</h3>
       <Carousel
         opts={{
           align: 'start',
         }}
-        className="w-full"
+        className="lg:w-[80%] sm:w-[80%] w-[75%] mx-auto h-52"
       >
         <CarouselContent className="h-full w-full mx-auto">
           {courses.map((course, index) => (
-            <CarouselItem key={index} className="basis-1/1 md:basis-1/2 lg:basis-1/4 my-1 ">
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4 my-1 ">
               <Card
                 key={course.id}
                 courseId={course.id}

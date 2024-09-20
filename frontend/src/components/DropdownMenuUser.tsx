@@ -26,7 +26,7 @@ export const DropdownMenuUser: React.FC = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex justify-between items-center cursor-pointer">
-          <div className='mr-2'>{name}</div>
+          <div className='md:mr-2 hidden md:block'>{name}</div>
           <UserAvatar />
         </div>
       </DropdownMenuTrigger>

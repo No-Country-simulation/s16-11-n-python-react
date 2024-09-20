@@ -43,7 +43,7 @@ export const ChatBot: React.FC = () => {
       <DropdownMenuTrigger className="fixed bottom-10 right-10 w-24 h-24 rounded-full cursor-pointer hover:scale-105 hover:translate-x-1 z-20">
         <Bot />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[90%] sm:w-[450px] sm:h-[550px] flex flex-col py-2 mr-10 dark:bg-[#00050D]">
+      <DropdownMenuContent className="w-screen  sm:w-[450px] h-[450px] xl:h-[550px] flex flex-col py-2 sm:mr-32 dark:bg-[#00050D]">
         <ChatArea chatMessages={chatMessages} isLoadingAnswer={isLoadingAnswer} />
         <InputTextChat
           updateChatMessages={updateChatMessages}

@@ -25,12 +25,12 @@ export const ModalForm: React.FC = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className="flex justify-between">
+        <div className="flex justify-between py-0.5">
           <button
             onClick={() => {
               setToggleForm(true);
             }}
-            className="p-1 h-7 cursor-pointer hover:text-zinc-300 mr-2"
+            className="text-sm sm:text-lg flex items-center cursor-pointer hover:text-zinc-300"
           >
             Inicia sesion
           </button>
@@ -38,20 +38,20 @@ export const ModalForm: React.FC = () => {
             onClick={() => {
               setToggleForm(false);
             }}
-            className="rounded-md bg-[#1A98FF] hover:bg-[#1371be] p-1.5 cursor-pointer"
+            className="rounded-md bg-[#1A98FF] hover:bg-[#1371be] p-1 cursor-pointer hidden md:block ml-2"
           >
             Comienza gratis!
           </button>
         </div>
       </SheetTrigger>
-      <SheetContent side="left" className="bg-[#101214] ">
+      <SheetContent side="left" className="bg-[#101214] w-screen md:w-[50%] z-50">
         <SheetHeader>
           <SheetTitle className="scroll-m-20 flex justify-center tracking-tight lg:text-3xl py-5">
             <Logo />
           </SheetTitle>
         </SheetHeader>
         <div className="grid gap-4 py-1">
-          <div className=" h-full w-full flex justify-center flex-col items-center">
+          <div className="h-full w-full flex justify-center flex-col items-center">
             {toggleForm ? (
               <FormLogIn handleRegister={handleRegister} />
             ) : (

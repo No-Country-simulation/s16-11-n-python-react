@@ -23,11 +23,11 @@ export function Search() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="flex justify-center items-center rounded-full h-12 w-12 cursor-pointer">
+        <div className="flex justify-center items-center rounded-full h-12 w-12 cursor-pointer bg-zinc-500">
           <FaSearch className="text-white" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-96 h-16 relative top-5 right-20">
+      <DropdownMenuContent className="w-full md:w-96 h-16 relative top-5 md:right-20">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
