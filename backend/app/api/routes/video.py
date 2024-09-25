@@ -1,7 +1,8 @@
 from typing import List
 from api.dependencies.auth import validate_authenticate_user
 from api.dependencies.db import get_session
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, HTTPException
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from schemas.video import VideoSchema
 from schemas.videoCourse import VideoSchemaId
@@ -37,11 +38,31 @@ async def get_video_id(
     video_id: str,
     db: AsyncSession = Depends(get_session),
 ):
-    video = await VideoCrud(db).get_id(video_id)
+    """
+    Get a specific video by its ID along with the related course and all videos associated with that course.
+    """
+    try:
+        video = await VideoCrud(db).get_id(video_id)
+        if video is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Video with id {video_id} not found.",
+            )
+        course = await VideoCrud(db).get_course_with_videos(video.course_id)
 
-    course = await VideoCrud(db).get_course_with_videos(video.course_id)
+        if course is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Course with id {video.course_id} not found.",
+            )
 
-    return {"video": video, "course": course}
+        return {"video": video, "course": course}
+
+    except SQLAlchemyError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error occurred while fetching the video or course.",
+        )
 
 
 @router.get(
@@ -52,9 +73,23 @@ async def get_video_id(
 async def get_all_videos(
     db: AsyncSession = Depends(get_session),
 ):
-    all_videos = await VideoCrud(db).get_all()
+    """
+    Gets a list of all videos available in the database.
+    """
+    try:
+        all_videos = await VideoCrud(db).get_all()
+        return all_videos
 
-    return all_videos
+    except SQLAlchemyError as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error occurred while fetching videos.",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An unexpected error occurred.",
+        )
 
 
 # @router.get(

@@ -8,9 +8,9 @@ router = APIRouter()
 @router.post(
     "/",
 )
-async def chat(pregunta: str = Form(...)):
-    if not pregunta:
-        raise HTTPException(status_code=400, detail="La pregunta no puede estar vacía")
+async def chat(question: str = Form(...)):
+    if not question:
+        raise HTTPException(status_code=400, detail="The question cannot be empty")
 
-    response = chat_session.send_message(pregunta)
-    return {"respuesta": response.text}
+    response = chat_session.send_message(question)
+    return {"response": response.text}
