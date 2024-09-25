@@ -14,13 +14,20 @@ else:
 class User(Base):
     __tablename__ = "user"
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[Optional[str]]
+    first_name: Mapped[Optional[str]]
+    last_name: Mapped[Optional[str]]
     email: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
     is_admin: Mapped[Optional[bool]] = mapped_column(default=False)
     is_active: Mapped[Optional[bool]] = mapped_column(default=True)
 
-    comment: Mapped[Comment] = relationship(back_populates="user")
-    my_courses: Mapped[List[MyCourses]] = relationship(
-        back_populates="user", lazy="selectin"
+    """
+    Faltan agregar mas relaciones
+    Se comentan para hacer una migración de solo el usuario
+    """
+    # comment: Mapped[Comment] = relationship(back_populates="user")
+    my_courses: Mapped[MyCourses] = relationship(
+        back_populates="user",
+        cascade="all, delete-orphan",
+        lazy="selectin",
     )
